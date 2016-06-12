@@ -1,4 +1,4 @@
-SkinChanger = scriptConfig("SkinChanger Skin Changer", "SkinChanger Skin Changer")
+SkinChanger = scriptConfig("Skin Changer", "Skin Changer")
 SkinChanger:addSubMenu("Settings", "Settings")
 SkinChanger.Settings:addSubMenu("My Hero", "me")
 SkinChanger.Settings.me:addParam("me", "Change "..myHero.charName.." Skin", SCRIPT_PARAM_SLICE, 1, 1, 13)
