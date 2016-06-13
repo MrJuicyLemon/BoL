@@ -1,1 +1,341 @@
-load(Base64Decode("bG9jYWwgVmVyc2lvbiA9ICIxLjAwIg0KZnVuY3Rpb24gVXBkYXRlKCkNCglpZiBHZXRHYW1lVGltZXIoKSA+IDEyMCB0aGVuIHByaW50KCJHYW1lIGlzIGFscmVhZHkgcHJvZ3Jlc3NpbmcsIHNraXBwaW5nIEF1dG8gVXBkYXRlIikgcmV0dXJuIGVuZA0KDQoJbG9jYWwgVXBkYXRlSG9zdCA9ICJyYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tIg0KCWxvY2FsIFNlcnZlclBhdGggPSAiL01ySnVpY3lMZW1vbi9Cb0wvbWFzdGVyLyINCglsb2NhbCBTZXJ2ZXJGaWxlTmFtZSA9ICJHbG9iYWxTa2luQ2hhbmdlci5sdWEiDQoJbG9jYWwgU2VydmVyVmVyc2lvbkZpbGVOYW1lID0gIkdsb2JhbFNraW5DaGFuZ2VyLnZlcnNpb24iDQoNCglETCA9IERvd25sb2FkKCkNCglsb2NhbCBTZXJ2ZXJWZXJzaW9uREFUQSA9IEdldFdlYlJlc3VsdCgicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIgLCBTZXJ2ZXJQYXRoLi5TZXJ2ZXJWZXJzaW9uRmlsZU5hbWUpDQoJaWYgU2VydmVyVmVyc2lvbkRBVEEgdGhlbg0KCQlsb2NhbCBTZXJ2ZXJWZXJzaW9uID0gdG9udW1iZXIoU2VydmVyVmVyc2lvbkRBVEEpDQoJCWlmIFNlcnZlclZlcnNpb24gdGhlbg0KCQkJaWYgU2VydmVyVmVyc2lvbiA+IHRvbnVtYmVyKFZlcnNpb24pIHRoZW4NCgkJCQlwcmludCgiVXBkYXRpbmcsIGRvbid0IHByZXNzIEY5IikNCgkJCQlETDpuZXdETChVcGRhdGVIb3N0LCBTZXJ2ZXJQYXRoLi5TZXJ2ZXJGaWxlTmFtZSwgU2VydmVyRmlsZU5hbWUsIExJQl9QQVRILCBmdW5jdGlvbiAoKQ0KCQkJCQlwcmludCgiU2tpbiBDaGFuZ2VyIHVwZGF0ZWQsIHBsZWFzZSByZWxvYWQiKQ0KCQkJCWVuZCkNCgkJCWVuZA0KCQllbHNlDQoJCQlwcmludCgiQW4gZXJyb3Igb2NjdXJlZCwgd2hpbGUgdXBkYXRpbmcsIHBsZWFzZSByZWxvYWQiKQ0KCQllbmQNCgllbHNlDQoJCXByaW50KCJDb3VsZCBub3QgY29ubmVjdCB0byB1cGRhdGUgU2VydmVyIikNCgllbmQNCmVuZA0KDQpjbGFzcyAiRG93bmxvYWQiDQpmdW5jdGlvbiBEb3dubG9hZDpfX2luaXQoKQ0KCXNvY2tldCA9IHJlcXVpcmUoInNvY2tldCIpDQoJc2VsZi5ha3RpdmVkb3dubG9hZHMgPSB7fQ0KCXNlbGYuY2FsbGJhY2tzID0ge30NCg0KCUFkZFRpY2tDYWxsYmFjayhmdW5jdGlvbiAoKQ0KCQlzZWxmOlJlbW92ZURvbmUoKQ0KCWVuZCkNCg0KCWNsYXNzKCJBc3luYyIpDQoJZnVuY3Rpb24gQXN5bmM6X19pbml0KGhvc3QsIGZpbGVwYXRoLCBsb2NhbG5hbWUsIGRyYXdvZmZzZXQsIGxvY2FscGF0aCkNCgkJc2VsZi5wcm9ncmVzcyA9IDANCgkJc2VsZi5ob3N0ID0gaG9zdA0KCQlzZWxmLmZpbGVwYXRoID0gZmlsZXBhdGgNCgkJc2VsZi5sb2NhbG5hbWUgPSBsb2NhbG5hbWUNCgkJc2VsZi5vZmZzZXQgPSBkcmF3b2Zmc2V0DQoJCXNlbGYubG9jYWxwYXRoID0gbG9jYWxwYXRoDQoJCXNlbGYuQ1JMRiA9ICdcclxuJw0KDQoJCXNlbGYuaGVhZHNvY2tldCA9IHNvY2tldC50Y3AoKQ0KCQlzZWxmLmhlYWRzb2NrZXQ6c2V0dGltZW91dCgxKQ0KCQlzZWxmLmhlYWRzb2NrZXQ6Y29ubmVjdChzZWxmLmhvc3QsIDgwKQ0KCQlzZWxmLmhlYWRzb2NrZXQ6c2VuZCgnSEVBRCAnLi5zZWxmLmZpbGVwYXRoLi4nIEhUVFAvMS4xJy4uIHNlbGYuQ1JMRiAuLidIb3N0OiAnLi5zZWxmLmhvc3QuLiBzZWxmLkNSTEYgLi4nVXNlci1BZ2VudDogTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgNi4xKSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNDEuMC4yMjI4LjAgU2FmYXJpLzUzNy4zNicuLiBzZWxmLkNSTEYgLi4gc2VsZi5DUkxGKQ0KDQoJCXNlbGYuSEVBRGRhdGEgPSAiIg0KCQlzZWxmLkRMZGF0YSA9ICIiDQoJCXNlbGYuU3RhcnRlZERvd25sb2FkID0gZmFsc2UNCgkJc2VsZi5jYW5ETCA9IHRydWUNCg0KCQlBZGRUaWNrQ2FsbGJhY2soZnVuY3Rpb24gKCkNCgkJCXNlbGY6dGljaygpDQoJCWVuZCkNCgkJQWRkRHJhd0NhbGxiYWNrKGZ1bmN0aW9uICgpDQoJCQlzZWxmOmRyYXcoKQ0KCQllbmQpDQoJZW5kDQoNCglmdW5jdGlvbiBBc3luYzp0aWNrKCkNCgkJaWYgc2VsZi5wcm9ncmVzcyA9PSAxMDAgdGhlbiByZXR1cm4gZW5kDQoJCWlmIHNlbGYuSEVBRGNTdGF0dXMgfj0gInRpbWVvdXQiIGFuZCBzZWxmLkhFQURjU3RhdHVzIH49ICJjbG9zZWQiIHRoZW4NCgkJCXNlbGYuSEVBRGZTdHJpbmcsIHNlbGYuSEVBRGNTdGF0dXMsIHNlbGYuSEVBRHBTdHJpbmcgPSBzZWxmLmhlYWRzb2NrZXQ6cmVjZWl2ZSgxNik7DQoJCQlpZiBzZWxmLkhFQURmU3RyaW5nIHRoZW4NCgkJCQlzZWxmLkhFQURkYXRhID0gc2VsZi5IRUFEZGF0YS4uc2VsZi5IRUFEZlN0cmluZw0KCQkJZWxzZWlmIHNlbGYuSEVBRHBTdHJpbmcgYW5kICNzZWxmLkhFQURwU3RyaW5nID4gMCB0aGVuDQoJCQkJc2VsZi5IRUFEZGF0YSA9IHNlbGYuSEVBRGRhdGEuLnNlbGYuSEVBRHBTdHJpbmcNCgkJCWVuZA0KCQllbHNlaWYgc2VsZi5IRUFEY1N0YXR1cyA9PSAidGltZW91dCIgdGhlbg0KCQkJc2VsZi5oZWFkc29ja2V0OmNsb3NlKCkNCgkJCS0tRmluZCBMZW5naHQNCgkJCWxvY2FsIGJlZ2luID0gc3RyaW5nLmZpbmQoc2VsZi5IRUFEZGF0YSwgIkxlbmd0aDogIikNCgkJCWlmIGJlZ2luIHRoZW4NCgkJCQlzZWxmLkhFQURkYXRhID0gc3RyaW5nLnN1YihzZWxmLkhFQURkYXRhLGJlZ2luKzgpDQoJCQkJbG9jYWwgbiA9IDANCgkJCQlsb2NhbCBfYnJlYWsgPSBmYWxzZQ0KCQkJCWZvciBpPTEsICNzZWxmLkhFQURkYXRhIGRvDQoJCQkJCWxvY2FsIGMgPSB0b251bWJlcihzdHJpbmcuc3ViKHNlbGYuSEVBRGRhdGEsaSxpKSkNCgkJCQkJaWYgYyBhbmQgX2JyZWFrID09IGZhbHNlIHRoZW4NCgkJCQkJCW4gPSBuKzENCgkJCQkJZWxzZQ0KCQkJCQkJX2JyZWFrID0gdHJ1ZQ0KCQkJCQllbmQNCgkJCQllbmQNCgkJCQlzZWxmLkhFQURkYXRhID0gc3RyaW5nLnN1YihzZWxmLkhFQURkYXRhLDEsbikNCgkJCQlzZWxmLlN0YXJ0ZWREb3dubG9hZCA9IHRydWUNCgkJCQlzZWxmLkhFQURjU3RhdHVzID0gImNsb3NlZCINCgkJCWVuZA0KCQllbmQNCgkJaWYgc2VsZi5IRUFEY1N0YXR1cyA9PSAiY2xvc2VkIiBhbmQgc2VsZi5TdGFydGVkRG93bmxvYWQgPT0gdHJ1ZSBhbmQgc2VsZi5jYW5ETCA9PSB0cnVlIHRoZW4gLS1Eb3VibGUgQ2hlY2sNCgkJCXNlbGYuY2FuREwgPSBmYWxzZQ0KCQkJc2VsZi5ETHNvY2tldCA9IHNvY2tldC50Y3AoKQ0KCQkJc2VsZi5ETHNvY2tldDpzZXR0aW1lb3V0KDEpDQoJCQlzZWxmLkRMc29ja2V0OmNvbm5lY3Qoc2VsZi5ob3N0LCA4MCkNCgkJCS0tU3RhcnQgTWFpbiBEb3dubG9hZA0KCQkJc2VsZi5ETHNvY2tldDpzZW5kKCdHRVQgJy4uc2VsZi5maWxlcGF0aC4uJyBIVFRQLzEuMScuLiBzZWxmLkNSTEYgLi4nSG9zdDogJy4uc2VsZi5ob3N0Li4gc2VsZi5DUkxGIC4uJ1VzZXItQWdlbnQ6IE1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDYuMSkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzQxLjAuMjIyOC4wIFNhZmFyaS81MzcuMzYnLi4gc2VsZi5DUkxGIC4uIHNlbGYuQ1JMRikNCgkJZW5kDQoJCQ0KCQlpZiBzZWxmLkRMc29ja2V0IGFuZCBzZWxmLkRMY1N0YXR1cyB+PSAidGltZW91dCIgYW5kIHNlbGYuRExjU3RhdHVzIH49ICJjbG9zZWQiIHRoZW4NCgkJCXNlbGYuRExmU3RyaW5nLCBzZWxmLkRMY1N0YXR1cywgc2VsZi5ETHBTdHJpbmcgPSBzZWxmLkRMc29ja2V0OnJlY2VpdmUoMTAyNCk7DQoJCQkNCgkJCWlmICgoc2VsZi5ETGZTdHJpbmcpIG9yIChzZWxmLkRMcFN0cmluZyBhbmQgI3NlbGYuRExwU3RyaW5nID4gMCkpIHRoZW4NCgkJCQlzZWxmLkRMZGF0YSA9IHNlbGYuRExkYXRhIC4uIChzZWxmLkRMZlN0cmluZyBvciBzZWxmLkRMcFN0cmluZykNCgkJCWVuZA0KDQoJCWVsc2VpZiBzZWxmLkRMY1N0YXR1cyBhbmQgc2VsZi5ETGNTdGF0dXMgPT0gInRpbWVvdXQiIHRoZW4NCgkJCXNlbGYuRExzb2NrZXQ6Y2xvc2UoKQ0KCQkJc2VsZi5ETGNTdGF0dXMgPSAiY2xvc2VkIg0KCQkJc2VsZi5ETGRhdGEgPSBzdHJpbmcuc3ViKHNlbGYuRExkYXRhLCNzZWxmLkRMZGF0YS10b251bWJlcihzZWxmLkhFQURkYXRhKSsxKQ0KDQoJCQlsb2NhbCBmaWxlID0gaW8ub3BlbihzZWxmLmxvY2FscGF0aC4uIlxcIi4uc2VsZi5sb2NhbG5hbWUsICJ3K2IiKQ0KCQkJZmlsZTp3cml0ZShzZWxmLkRMZGF0YSkNCgkJCWZpbGU6Y2xvc2UoKQ0KCQkJc2VsZi5wcm9ncmVzcyA9IDEwMA0KCQllbmQNCg0KCQlpZiBzZWxmLnByb2dyZXNzIH49IDEwMCBhbmQgc2VsZi5ETGRhdGEgYW5kICNzZWxmLkRMZGF0YSA+IDAgdGhlbg0KCQkJc2VsZi5wcm9ncmVzcyA9ICgjc2VsZi5ETGRhdGEvdG9udW1iZXIoc2VsZi5IRUFEZGF0YSkpKjEwMA0KCQllbmQNCgllbmQNCg0KCWZ1bmN0aW9uIEFzeW5jOmRyYXcoKQ0KCQlpZiBzZWxmLnByb2dyZXNzIDwgMTAwIHRoZW4NCgkJCURyYXdUZXh0QSgiRG93bmxvYWRpbmc6ICIuLnNlbGYubG9jYWxuYW1lLDE1LDUwLDM1K3NlbGYub2Zmc2V0KQ0KCQkJRHJhd1JlY3RhbmdsZU91dGxpbmUoNDksNTArc2VsZi5vZmZzZXQsMjUwLDIwLCBBUkdCKDI1NSwyNTUsMjU1LDI1NSksMSkNCgkJCWlmIHNlbGYucHJvZ3Jlc3Mgfj0gMTAwIHRoZW4NCgkJCQlEcmF3TGluZSg1MCw2MCtzZWxmLm9mZnNldCw1MCsoMi41KnNlbGYucHJvZ3Jlc3MpLDYwK3NlbGYub2Zmc2V0LDE4LEFSR0IoMTUwLDI1NS1zZWxmLnByb2dyZXNzKjIuNSxzZWxmLnByb2dyZXNzKjIuNSwyNTUtc2VsZi5wcm9ncmVzcyoyLjUpKQ0KCQkJCURyYXdUZXh0QSh0b3N0cmluZyhtYXRoLnJvdW5kKHNlbGYucHJvZ3Jlc3MpLi4iICUiKSwgMTUsMTUwLDUyK3NlbGYub2Zmc2V0KQ0KCQkJZW5kDQoJCWVuZA0KCWVuZA0KDQplbmQNCg0KZnVuY3Rpb24gRG93bmxvYWQ6bmV3REwoaG9zdCwgZmlsZSwgbmFtZSwgcGF0aCwgY2FsbGJhY2spDQoJbG9jYWwgb2Zmc2V0ID0gKCNzZWxmLmFrdGl2ZWRvd25sb2FkcysxKSo0MA0KCXNlbGYuYWt0aXZlZG93bmxvYWRzWyNzZWxmLmFrdGl2ZWRvd25sb2FkcysxXSA9IEFzeW5jKGhvc3QsIGZpbGUsIG5hbWUsIG9mZnNldC00MCwgcGF0aCkNCglpZiBub3QgY2FsbGJhY2sgdGhlbg0KCQljYWxsYmFjayA9IChmdW5jdGlvbiAoKQ0KCQllbmQpDQoJZW5kDQoNCglzZWxmLmNhbGxiYWNrc1sjc2VsZi5jYWxsYmFja3MrMV0gPSBjYWxsYmFjaw0KDQplbmQNCg0KZnVuY3Rpb24gRG93bmxvYWQ6UmVtb3ZlRG9uZSgpDQoJaWYgI3NlbGYuYWt0aXZlZG93bmxvYWRzID09IDAgdGhlbiByZXR1cm4gZW5kDQoJbG9jYWwgeCA9IHt9DQoJZm9yIGssIHYgaW4gcGFpcnMoc2VsZi5ha3RpdmVkb3dubG9hZHMpIGRvDQoJCWlmIG1hdGgucm91bmQodi5wcm9ncmVzcykgPCAxMDAgdGhlbg0KCQkJdi5vZmZzZXQgPSBrKjQwLTQwDQoJCQl4WyN4KzFdID0gdg0KCQllbHNlDQoJCQlzZWxmLmNhbGxiYWNrc1trXSgpDQoJCWVuZA0KCWVuZA0KCXNlbGYuYWt0aXZlZG93bmxvYWRzID0ge30NCglzZWxmLmFrdGl2ZWRvd25sb2FkcyA9IHgNCmVuZA0KDQpTa2luTmFtZXMgPSB7DQoJWyJBYXRyb3giXSA9IHsiQ2xhc3NpYyIsICJKdXN0aWNhciIsICJNZWNoYSIsICJTZWEgSHVudGVyIn0sDQoJWyJBaHJpIl0gPSB7IkNsYXNzaWMiLCAiRHluYXN0eSIsICJNaWRuaWdodCIsICJGb3hmaXJlIiwgIlBvcHN0YXIiLCAiQ2hhbGxlbmdlciIsICJBY2FkZW15In0sDQoJWyJBa2FsaSJdID0geyJDbGFzc2ljIiwgIlN0aW5nZXIiLCAiQ3JpbXNvbiIsICJBbGwtc3RhciIsICJOdXJzZSIsICJCbG9vZCBNb29uIiwgIlNpbHZlcmZhbmciLCAiSGVhZGh1bnRlciJ9LA0KCVsiQWxpc3RhciJdID0geyJDbGFzc2ljIiwgIkJsYWNrIiwgIkdvbGRlbiIsICJNYXRhZG9yIiwgIkxvbmdob3JuIiwgIlVuY2hhaW5lZCIsICJJbmZlcm5hbCIsICJTd2VlcGVyIiwgIk1hcmF1ZGVyIn0sDQoJWyJBbXVtdSJdID0geyJDbGFzc2ljIiwgIlBoYXJhb2giLCAiVmFuY291dmVyIiwgIkVtdW11IiwgIlJlLUdpZnRlZCIsICJBbG1vc3QtUHJvbSBLaW5nIiwgIkxpdHRsZSBLbmlnaHQiLCAiU2FkIFJvYm90IiwgIlN1cnByaXNlIFBhcnR5In0sDQoJWyJBbml2aWEiXSA9IHsiQ2xhc3NpYyIsICJUZWFtIFNwaXJpdCIsICJCaXJkIG9mIFByZXkiLCAiTm94dXMgSHVudGVyIiwgIkhleHRlY2giLCAiQmxhY2tmcm9zdCIsICJQcmVoaXN0b3JpYyJ9LA0KCVsiQW5uaWUiXSA9IHsiQ2xhc3NpYyIsICJHb3RoIiwgIlJlZCBSaWRpbmciLCAiQW5uaWUgaW4gV29uZGVybGFuZCIsICJQcm9tIFF1ZWVuIiwgIkZyb3N0ZmlyZSIsICJSZXZlcnNlIiwgIkZyYW5rZW5UaWJiZXJzIiwgIlBhbmRhIiwgIlN3ZWV0aGVhcnQifSwNCglbIkFzaGUiXSA9IHsiQ2xhc3NpYyIsICJGcmVsam9yZCIsICJTaGVyd29vZCBGb3Jlc3QiLCAiV29hZCIsICJRdWVlbiIsICJBbWV0aHlzdCIsICJIZWFydHNlZWtlciIsICJNYXJhdWRlciJ9LA0KCVsiQXppciJdID0geyJDbGFzc2ljIiwgIkdhbGFjdGljIiwgIkdyYXZlbG9yZCJ9LA0KCS0tIEINCglbIkJhcmQiXSA9IHsiQ2xhc3NpYyIsICJFbGRlcndvb2QiLCAiQ2hyb21hIFBhY2s6IE1hcmlnb2xkIiwgIkNocm9tYSBQYWNrOiBJdnkiLCAiQ2hyb21hIFBhY2s6IFNhZ2UifSwNCglbIkJsaXR6Y3JhbmsiXSA9IHsiQ2xhc3NpYyIsICJSdXN0eSIsICJHb2Fsa2VlcGVyIiwgIkJvb20gQm9vbSIsICJQaWx0b3ZlciBDdXN0b21zIiwgIkRlZmluaXRlbHkgTm90IiwgImlCbGl0emNyYW5rIiwgIlJpb3QiLCAiQ2hyb21hIFBhY2s6IE1vbHRlbiIsICJDaHJvbWEgUGFjazogQ29iYWx0IiwgIkNocm9tYSBQYWNrOiBHdW5tZXRhbCIsICJCYXR0bGUgQm9zcyJ9LA0KCVsiQnJhbmQiXSA9IHsiQ2xhc3NpYyIsICJBcG9jYWx5cHRpYyIsICJWYW5kYWwiLCAiQ3J5b2NvcmUiLCAiWm9tYmllIiwgIlNwaXJpdCBGaXJlIn0sDQoJWyJCcmF1bSJdID0geyJDbGFzc2ljIiwgIkRyYWdvbnNsYXllciIsICJFbCBUaWdyZSIsICJMaW9uaGVhcnQifSwNCgktLSBDDQoJWyJDYWl0bHluIl0gPSB7IkNsYXNzaWMiLCAiUmVzaXN0YW5jZSIsICJTaGVyaWZmIiwgIlNhZmFyaSIsICJBcmN0aWMgV2FyZmFyZSIsICJPZmZpY2VyIiwgIkhlYWRodW50ZXIiLCAiQ2hyb21hIFBhY2s6IFBpbmsiLCAiQ2hyb21hIFBhY2s6IEdyZWVuIiwgIkNocm9tYSBQYWNrOiBCbHVlIiwiTHVuYXIifSwNCglbIkNhc3Npb3BlaWEiXSA9IHsiQ2xhc3NpYyIsICJEZXNwZXJhZGEiLCAiU2lyZW4iLCAiTXl0aGljIiwgIkphZGUgRmFuZyIsICJDaHJvbWEgUGFjazogRGF5IiwgIkNocm9tYSBQYWNrOiBEdXNrIiwgIkNocm9tYSBQYWNrOiBOaWdodCJ9LA0KCVsiQ2hvZ2F0aCJdID0geyJDbGFzc2ljIiwgIk5pZ2h0bWFyZSIsICJHZW50bGVtYW4iLCAiTG9jaCBOZXNzIiwgIkp1cmFzc2ljIiwgIkJhdHRsZWNhc3QgUHJpbWUiLCAiUHJlaGlzdG9yaWMifSwNCglbIkNvcmtpIl0gPSB7IkNsYXNzaWMiLCAiVUZPIiwgIkljZSBUb2JvZ2dhbiIsICJSZWQgQmFyb24iLCAiSG90IFJvZCIsICJVcmZyaWRlciIsICJEcmFnb253aW5nIiwgIkZuYXRpYyJ9LA0KCS0tIEQNCglbIkRhcml1cyJdID0geyJDbGFzc2ljIiwgIkxvcmQiLCAiQmlvZm9yZ2UiLCAiV29hZCBLaW5nIiwgIkR1bmttYXN0ZXIiLCAiQ2hyb21hIFBhY2s6IEJsYWNrIElyb24iLCAiQ2hyb21hIFBhY2s6IEJyb256ZSIsICJDaHJvbWEgUGFjazogQ29wcGVyIiwgIkFjYWRlbXkifSwNCglbIkRpYW5hIl0gPSB7IkNsYXNzaWMiLCAiRGFyayBWYWxreXJpZSIsICJMdW5hciBHb2RkZXNzIn0sDQoJWyJEck11bmRvIl0gPSB7IkNsYXNzaWMiLCAiVG94aWMiLCAiTXIuIE11bmRvdmVyc2UiLCAiQ29ycG9yYXRlIE11bmRvIiwgIk11bmRvIE11bmRvIiwgIkV4ZWN1dGlvbmVyIE11bmRvIiwgIlJhZ2Vib3JuIE11bmRvIiwgIlRQQSBNdW5kbyIsICJQb29sIFBhcnR5In0sDQoJWyJEcmF2ZW4iXSA9IHsiQ2xhc3NpYyIsICJTb3VsIFJlYXZlciIsICJHbGFkaWF0b3IiLCAiUHJpbWV0aW1lIiwgIlBvb2wgUGFydHkifSwNCgktLSBFDQoJWyJFa2tvIl0gPSB7IkNsYXNzaWMiLCAiU2FuZHN0b3JtIiwgIkFjYWRlbXkifSwNCglbIkVsaXNlIl0gPSB7IkNsYXNzaWMiLCAiRGVhdGggQmxvc3NvbSIsICJWaWN0b3Jpb3VzIiwgIkJsb29kIE1vb24ifSwNCglbIkV2ZWx5bm4iXSA9IHsiQ2xhc3NpYyIsICJTaGFkb3ciLCAiTWFzcXVlcmFkZSIsICJUYW5nbyIsICJTYWZlY3JhY2tlciJ9LA0KCVsiRXpyZWFsIl0gPSB7IkNsYXNzaWMiLCAiTm90dGluZ2hhbSIsICJTdHJpa2VyIiwgIkZyb3N0ZWQiLCAiRXhwbG9yZXIiLCAiUHVsc2VmaXJlIiwgIlRQQSIsICJEZWJvbmFpciIsICJBY2Ugb2YgU3BhZGVzIn0sDQoJLS0gRg0KCVsiRmlkZGxlU3RpY2tzIl0gPSB7IkNsYXNzaWMiLCAiU3BlY3RyYWwiLCAiVW5pb24gSmFjayIsICJCYW5kaXRvIiwgIlB1bXBraW5oZWFkIiwgIkZpZGRsZSBNZSBUaW1iZXJzIiwgIlN1cnByaXNlIFBhcnR5IiwgIkRhcmsgQ2FuZHkiLCAiUmlzZW4ifSwNCglbIkZpb3JhIl0gPSB7IkNsYXNzaWMiLCAiUm95YWwgR3VhcmQiLCAiTmlnaHRyYXZlbiIsICJIZWFkbWlzdHJlc3MiLCAiUFJPSkVDVCJ9LA0KCVsiRml6eiJdID0geyJDbGFzc2ljIiwgIkF0bGFudGVhbiIsICJUdW5kcmEiLCAiRmlzaGVybWFuIiwgIlZvaWQiLCAiQ2hyb21hIFBhY2s6IE9yYW5nZSIsICJDaHJvbWEgUGFjazogQmxhY2siLCAiQ2hyb21hIFBhY2s6IFJlZCIsICJDb3R0b250YWlsIn0sDQoJLS0gRw0KCVsiR2FsaW8iXSA9IHsiQ2xhc3NpYyIsICJFbmNoYW50ZWQiLCAiSGV4dGVjaCIsICJDb21tYW5kbyIsICJHYXRla2VlcGVyIiwgIkRlYm9uYWlyIn0sDQoJWyJHYW5ncGxhbmsiXSA9IHsiQ2xhc3NpYyIsICJTcG9va3kiLCAiTWludXRlbWFuIiwgIlNhaWxvciIsICJUb3kgU29sZGllciIsICJTcGVjaWFsIEZvcmNlcyIsICJTdWx0YW4iLCAiQ2FwdGFpbiJ9LA0KCVsiR2FyZW4iXSA9IHsiQ2xhc3NpYyIsICJTYW5ndWluZSIsICJEZXNlcnQgVHJvb3BlciIsICJDb21tYW5kbyIsICJEcmVhZGtuaWdodCIsICJSdWdnZWQiLCAiU3RlZWwgTGVnaW9uIiwgIkNocm9tYSBQYWNrOiBHYXJuZXQiLCAiQ2hyb21hIFBhY2s6IFBsdW0iLCAiQ2hyb21hIFBhY2s6IEl2b3J5IiwgIlJvZ3VlIEFkbWlyYWwifSwNCglbIkduYXIiXSA9IHsiQ2xhc3NpYyIsICJEaW5vIiwgIkdlbnRsZW1hbiJ9LA0KCVsiR3JhZ2FzIl0gPSB7IkNsYXNzaWMiLCAiU2N1YmEiLCAiSGlsbGJpbGx5IiwgIlNhbnRhIiwgIkdyYWdhcywgRXNxLiIsICJWYW5kYWwiLCAiT2t0b2JlcmZlc3QiLCAiU3VwZXJmYW4iLCAiRm5hdGljIiwgIkNhc2ticmVha2VyIn0sDQoJWyJHcmF2ZXMiXSA9IHsiQ2xhc3NpYyIsICJIaXJlZCBHdW4iLCAiSmFpbGJyZWFrIiwgIk1hZmlhIiwgIlJpb3QiLCAiUG9vbCBQYXJ0eSIsICJDdXR0aHJvYXQifSwNCgktLSBIDQoJWyJIZWNhcmltIl0gPSB7IkNsYXNzaWMiLCAiQmxvb2QgS25pZ2h0IiwgIlJlYXBlciIsICJIZWFkbGVzcyIsICJBcmNhZGUiLCAiRWxkZXJ3b29kIn0sDQoJWyJIZWltZXJkaW5nZXIiXSA9IHsiQ2xhc3NpYyIsICJBbGllbiBJbnZhZGVyIiwgIkJsYXN0IFpvbmUiLCAiUGlsdG92ZXIgQ3VzdG9tcyIsICJTbm93bWVyZGluZ2VyIiwgIkhhem1hdCJ9LA0KCS0tIEkNCglbIklsbGFvaSJdID0geyJDbGFzc2ljIiwgIlZvaWQgQnJpbmdlciJ9LA0KCVsiSXJlbGlhIl0gPSB7IkNsYXNzaWMiLCAiTmlnaHRibGFkZSIsICJBdmlhdG9yIiwgIkluZmlsdHJhdG9yIiwgIkZyb3N0YmxhZGUiLCAiT3JkZXIgb2YgdGhlIExvdHVzIn0sDQoJLS0gSg0KCVsiSmFubmEiXSA9IHsiQ2xhc3NpYyIsICJUZW1wZXN0IiwgIkhleHRlY2giLCAiRnJvc3QgUXVlZW4iLCAiVmljdG9yaW91cyIsICJGb3JlY2FzdCIsICJGbmF0aWMifSwNCglbIkphcnZhbklWIl0gPSB7IkNsYXNzaWMiLCAiQ29tbWFuZG8iLCAiRHJhZ29uc2xheWVyIiwgIkRhcmtmb3JnZSIsICJWaWN0b3Jpb3VzIiwgIldhcnJpbmcgS2luZ2RvbXMiLCAiRm5hdGljIn0sDQoJWyJKYXgiXSA9IHsiQ2xhc3NpYyIsICJUaGUgTWlnaHR5IiwgIlZhbmRhbCIsICJBbmdsZXIiLCAiUEFYIiwgIkpheGltdXMiLCAiVGVtcGxlIiwgIk5lbWVzaXMiLCAiU0tUIFQxIiwgIkNocm9tYSBQYWNrOiBDcmVhbSIsICJDaHJvbWEgUGFjazogQW1iZXIiLCAiQ2hyb21hIFBhY2s6IEJyaWNrIiwgIldhcmRlbiJ9LA0KCVsiSmF5Y2UiXSA9IHsiQ2xhc3NpYyIsICJGdWxsIE1ldGFsIiwgIkRlYm9uYWlyIiwgIkZvcnNha2VuIn0sDQoJWyJKaW54Il0gPSB7IkNsYXNzaWMiLCAiTWFmaWEiLCAiRmlyZWNyYWNrZXIiLCAiU2xheWVyIn0sDQoJLS0gSw0KCVsiS2FsaXN0YSJdID0geyJDbGFzc2ljIiwgIkJsb29kIE1vb24iLCAiQ2hhbXBpb25zaGlwIn0sDQoJWyJLYXJtYSJdID0geyJDbGFzc2ljIiwgIlN1biBHb2RkZXNzIiwgIlNha3VyYSIsICJUcmFkaXRpb25hbCIsICJPcmRlciBvZiB0aGUgTG90dXMiLCAiV2FyZGVuIn0sDQoJWyJLYXJ0aHVzIl0gPSB7IkNsYXNzaWMiLCAiUGhhbnRvbSIsICJTdGF0dWUgb2YiLCAiR3JpbSBSZWFwZXIiLCAiUGVudGFraWxsIiwgIkZuYXRpYyIsICJDaHJvbWEgUGFjazogQnVybiIsICJDaHJvbWEgUGFjazogQmxpZ2h0IiwgIkNocm9tYSBQYWNrOiBGcm9zdGJpdGUifSwNCglbIkthc3NhZGluIl0gPSB7IkNsYXNzaWMiLCAiRmVzdGl2YWwiLCAiRGVlcCBPbmUiLCAiUHJlLVZvaWQiLCAiSGFyYmluZ2VyIiwgIkNvc21pYyBSZWF2ZXIifSwNCglbIkthdGFyaW5hIl0gPSB7IkNsYXNzaWMiLCAiTWVyY2VuYXJ5IiwgIlJlZCBDYXJkIiwgIkJpbGdld2F0ZXIiLCAiS2l0dHkgQ2F0IiwgIkhpZ2ggQ29tbWFuZCIsICJTYW5kc3Rvcm0iLCAiU2xheSBCZWxsZSIsICJXYXJyaW5nIEtpbmdkb21zIn0sDQoJWyJLYXlsZSJdID0geyJDbGFzc2ljIiwgIlNpbHZlciIsICJWaXJpZGlhbiIsICJVbm1hc2tlZCIsICJCYXR0bGVib3JuIiwgIkp1ZGdtZW50IiwgIkFldGhlciBXaW5nIiwgIlJpb3QifSwNCglbIktlbm5lbiJdID0geyJDbGFzc2ljIiwgIkRlYWRseSIsICJTd2FtcCBNYXN0ZXIiLCAiS2FyYXRlIiwgIktlbm5lbiBNLkQuIiwgIkFyY3RpYyBPcHMifSwNCglbIktoYXppeCJdID0geyJDbGFzc2ljIiwgIk1lY2hhIiwgIkd1YXJkaWFuIG9mIHRoZSBTYW5kcyJ9LA0KCVsiS2luZHJlZCJdID0geyJDbGFzc2ljIiwgIlNoYWRvd2ZpcmUifSwNCglbIktvZ01hdyJdID0geyJDbGFzc2ljIiwgIkNhdGVycGlsbGFyIiwgIlNvbm9yYW4iLCAiTW9uYXJjaCIsICJSZWluZGVlciIsICJMaW9uIERhbmNlIiwgIkRlZXAgU2VhIiwgIkp1cmFzc2ljIiwgIkJhdHRsZWNhc3QifSwNCgktLSBMDQoJWyJMZWJsYW5jIl0gPSB7IkNsYXNzaWMiLCAiV2lja2VkIiwgIlByZXN0aWdpb3VzIiwgIk1pc3RsZXRvZSIsICJSYXZlbmJvcm4ifSwNCglbIkxlZVNpbiJdID0geyJDbGFzc2ljIiwgIlRyYWRpdGlvbmFsIiwgIkFjb2x5dGUiLCAiRHJhZ29uIEZpc3QiLCAiTXVheSBUaGFpIiwgIlBvb2wgUGFydHkiLCAiU0tUIFQxIiwgIkNocm9tYSBQYWNrOiBCbGFjayIsICJDaHJvbWEgUGFjazogQmx1ZSIsICJDaHJvbWEgUGFjazogWWVsbG93IiwgIktub2Nrb3V0In0sDQoJWyJMZW9uYSJdID0geyJDbGFzc2ljIiwgIlZhbGt5cmllIiwgIkRlZmVuZGVyIiwgIklyb24gU29sYXJpIiwgIlBvb2wgUGFydHkiLCAiQ2hyb21hIFBhY2s6IFBpbmsiLCAiQ2hyb21hIFBhY2s6IEF6dXJlIiwgIkNocm9tYSBQYWNrOiBMZW1vbiIsICJQUk9KRUNUIn0sDQoJWyJMaXNzYW5kcmEiXSA9IHsiQ2xhc3NpYyIsICJCbG9vZHN0b25lIiwgIkJsYWRlIFF1ZWVuIn0sDQoJWyJMdWNpYW4iXSA9IHsiQ2xhc3NpYyIsICJIaXJlZCBHdW4iLCAiU3RyaWtlciIsICJDaHJvbWEgUGFjazogWWVsbG93IiwgIkNocm9tYSBQYWNrOiBSZWQiLCAiQ2hyb21hIFBhY2s6IEJsdWUiLCAiUFJPSkVDVCJ9LA0KCVsiTHVsdSJdID0geyJDbGFzc2ljIiwgIkJpdHRlcnN3ZWV0IiwgIldpY2tlZCIsICJEcmFnb24gVHJhaW5lciIsICJXaW50ZXIgV29uZGVyIiwgIlBvb2wgUGFydHkifSwNCglbIkx1eCJdID0geyJDbGFzc2ljIiwgIlNvcmNlcmVzcyIsICJTcGVsbHRoaWVmIiwgIkNvbW1hbmRvIiwgIkltcGVyaWFsIiwgIlN0ZWVsIExlZ2lvbiIsICJTdGFyIEd1YXJkaWFuIn0sDQoJLS0gTQ0KCVsiTWFscGhpdGUiXSA9IHsiQ2xhc3NpYyIsICJTaGFtcm9jayIsICJDb3JhbCBSZWVmIiwgIk1hcmJsZSIsICJPYnNpZGlhbiIsICJHbGFjaWFsIiwgIk1lY2hhIiwgIklyb25zaWRlIn0sDQoJWyJNYWx6YWhhciJdID0geyJDbGFzc2ljIiwgIlZpemllciIsICJTaGFkb3cgUHJpbmNlIiwgIkRqaW5uIiwgIk92ZXJsb3JkIiwgIlNub3cgRGF5In0sDQoJWyJNYW9rYWkiXSA9IHsiQ2xhc3NpYyIsICJDaGFycmVkIiwgIlRvdGVtaWMiLCAiRmVzdGl2ZSIsICJIYXVudGVkIiwgIkdvYWxrZWVwZXIifSwNCglbIk1hc3RlcllpIl0gPSB7IkNsYXNzaWMiLCAiQXNzYXNzaW4iLCAiQ2hvc2VuIiwgIklvbmlhIiwgIlNhbXVyYWkgWWkiLCAiSGVhZGh1bnRlciIsICJDaHJvbWEgUGFjazogR29sZCIsICJDaHJvbWEgUGFjazogQXF1YSIsICJDaHJvbWEgUGFjazogQ3JpbXNvbiIsICJQUk9KRUNUIn0sDQoJWyJNaXNzRm9ydHVuZSJdID0geyJDbGFzc2ljIiwgIkNvd2dpcmwiLCAiV2F0ZXJsb28iLCAiU2VjcmV0IEFnZW50IiwgIkNhbmR5IENhbmUiLCAiUm9hZCBXYXJyaW9yIiwgIk1hZmlhIiwgIkFyY2FkZSIsICJDYXB0YWluIn0sDQoJWyJNb3JkZWthaXNlciJdID0geyJDbGFzc2ljIiwgIkRyYWdvbiBLbmlnaHQiLCAiSW5mZXJuYWwiLCAiUGVudGFraWxsIiwgIkxvcmQiLCAiS2luZyBvZiBDbHVicyJ9LA0KCVsiTW9yZ2FuYSJdID0geyJDbGFzc2ljIiwgIkV4aWxlZCIsICJTaW5mdWwgU3VjY3VsZW5jZSIsICJCbGFkZSBNaXN0cmVzcyIsICJCbGFja3Rob3JuIiwgIkdob3N0IEJyaWRlIiwgIlZpY3RvcmlvdXMiLCAiQ2hyb21hIFBhY2s6IFRveGljIiwgIkNocm9tYSBQYWNrOiBQYWxlIiwgIkNocm9tYSBQYWNrOiBFYm9ueSIsIkx1bmFyIn0sDQoJLS0gTg0KCVsiTmFtaSJdID0geyJDbGFzc2ljIiwgIktvaSIsICJSaXZlciBTcGlyaXQiLCAiVXJmIiwgIkNocm9tYSBQYWNrOiBTdW5iZWFtIiwgIkNocm9tYSBQYWNrOiBTbW9rZSIsICJDaHJvbWEgUGFjazogVHdpbGlnaHQifSwNCglbIk5hc3VzIl0gPSB7IkNsYXNzaWMiLCAiR2FsYWN0aWMiLCAiUGhhcmFvaCIsICJEcmVhZGtuaWdodCIsICJSaW90IEstOSIsICJJbmZlcm5hbCIsICJBcmNoZHVrZSIsICJDaHJvbWEgUGFjazogQnVybiIsICJDaHJvbWEgUGFjazogQmxpZ2h0IiwgIkNocm9tYSBQYWNrOiBGcm9zdGJpdGUiLH0sDQoJWyJOYXV0aWx1cyJdID0geyJDbGFzc2ljIiwgIkFieXNzYWwiLCAiU3VidGVycmFuZWFuIiwgIkFzdHJvTmF1dGlsdXMiLCAiV2FyZGVuIn0sDQoJWyJOaWRhbGVlIl0gPSB7IkNsYXNzaWMiLCAiU25vdyBCdW5ueSIsICJMZW9wYXJkIiwgIkZyZW5jaCBNYWlkIiwgIlBoYXJhb2giLCAiQmV3aXRjaGluZyIsICJIZWFkaHVudGVyIiwgIldhcnJpbmcgS2luZ2RvbXMifSwNCglbIk5vY3R1cm5lIl0gPSB7IkNsYXNzaWMiLCAiRnJvemVuIFRlcnJvciIsICJWb2lkIiwgIlJhdmFnZXIiLCAiSGF1bnRpbmciLCAiRXRlcm51bSJ9LA0KCVsiTnVudSJdID0geyJDbGFzc2ljIiwgIlNhc3F1YXRjaCIsICJXb3Jrc2hvcCIsICJHcnVuZ3kiLCAiTnVudSBCb3QiLCAiRGVtb2xpc2hlciIsICJUUEEiLCAiWm9tYmllIn0sDQoJLS0gTw0KCVsiT2xhZiJdID0geyJDbGFzc2ljIiwgIkZvcnNha2VuIiwgIkdsYWNpYWwiLCAiQnJvbGFmIiwgIlBlbnRha2lsbCIsICJNYXJhdWRlciJ9LA0KCVsiT3JpYW5uYSJdID0geyJDbGFzc2ljIiwgIkdvdGhpYyIsICJTZXduIENoYW9zIiwgIkJsYWRlY3JhZnQiLCAiVFBBIiwgIldpbnRlciBXb25kZXIifSwNCgktLSBQDQoJWyJQYW50aGVvbiJdID0geyJDbGFzc2ljIiwgIk15cm1pZG9uIiwgIlJ1dGhsZXNzIiwgIlBlcnNldXMiLCAiRnVsbCBNZXRhbCIsICJHbGFpdmUgV2FycmlvciIsICJEcmFnb25zbGF5ZXIiLCAiU2xheWVyIn0sDQoJWyJQb3BweSJdID0geyJDbGFzc2ljIiwgIk5veHVzIiwgIkxvbGxpcG9wcHkiLCAiQmxhY2tzbWl0aCIsICJSYWdkb2xsIiwgIkJhdHRsZSBSZWdhbGlhIiwgIlNjYXJsZXQgSGFtbWVyIn0sDQoJLS0gUQ0KCVsiUXVpbm4iXSA9IHsiQ2xhc3NpYyIsICJQaG9lbml4IiwgIldvYWQgU2NvdXQiLCAiQ29yc2FpciJ9LA0KCS0tIFINCglbIlJhbW11cyJdID0geyJDbGFzc2ljIiwgIktpbmciLCAiQ2hyb21lIiwgIk1vbHRlbiIsICJGcmVsam9yZCIsICJOaW5qYSIsICJGdWxsIE1ldGFsIiwgIkd1YXJkaWFuIG9mIHRoZSBTYW5kcyJ9LA0KCVsiUmVrc2FpIl0gPSB7IkNsYXNzaWMiLCAiRXRlcm51bSIsICJQb29sIFBhcnR5In0sDQoJWyJSZW5la3RvbiJdID0geyJDbGFzc2ljIiwgIkdhbGFjdGljIiwgIk91dGJhY2siLCAiQmxvb2RmdXJ5IiwgIlJ1bmUgV2FycyIsICJTY29yY2hlZCBFYXJ0aCIsICJQb29sIFBhcnR5IiwgIlNjb3JjaGVkIEVhcnRoIiwgIlByZWhpc3RvcmljIn0sDQoJWyJSZW5nYXIiXSA9IHsiQ2xhc3NpYyIsICJIZWFkaHVudGVyIiwgIk5pZ2h0IEh1bnRlciIsICJTU1cifSwNCglbIlJpdmVuIl0gPSB7IkNsYXNzaWMiLCAiUmVkZWVtZWQiLCAiQ3JpbXNvbiBFbGl0ZSIsICJCYXR0bGUgQnVubnkiLCAiQ2hhbXBpb25zaGlwIiwgIkRyYWdvbmJsYWRlIiwgIkFyY2FkZSJ9LA0KCVsiUnVtYmxlIl0gPSB7IkNsYXNzaWMiLCAiUnVtYmxlIGluIHRoZSBKdW5nbGUiLCAiQmlsZ2VyYXQiLCAiU3VwZXIgR2FsYXh5In0sDQoJWyJSeXplIl0gPSB7IkNsYXNzaWMiLCAiSHVtYW4iLCAiVHJpYmFsIiwgIlVuY2xlIiwgIlRyaXVtcGhhbnQiLCAiUHJvZmVzc29yIiwgIlpvbWJpZSIsICJEYXJrIENyeXN0YWwiLCAiUGlyYXRlIiwgIldoaXRlYmVhcmQifSwNCgktLSBTDQoJWyJTZWp1YW5pIl0gPSB7IkNsYXNzaWMiLCAiU2FicmV0dXNrIiwgIkRhcmtyaWRlciIsICJUcmFkaXRpb25hbCIsICJCZWFyIENhdmFscnkiLCAiUG9ybyBSaWRlciJ9LA0KCVsiU2hhY28iXSA9IHsiQ2xhc3NpYyIsICJNYWQgSGF0dGVyIiwgIlJveWFsIiwgIk51dGNyYWNrbyIsICJXb3Jrc2hvcCIsICJBc3lsdW0iLCAiTWFza2VkIiwgIldpbGQgQ2FyZCJ9LA0KCVsiU2hlbiJdID0geyJDbGFzc2ljIiwgIkZyb3plbiIsICJZZWxsb3cgSmFja2V0IiwgIlN1cmdlb24iLCAiQmxvb2QgTW9vbiIsICJXYXJsb3JkIiwgIlRQQSJ9LA0KCVsiU2h5dmFuYSJdID0geyJDbGFzc2ljIiwgIklyb25zY2FsZSIsICJCb25lY2xhdyIsICJEYXJrZmxhbWUiLCAiSWNlIERyYWtlIiwgIkNoYW1waW9uc2hpcCJ9LA0KCVsiU2luZ2VkIl0gPSB7IkNsYXNzaWMiLCAiUmlvdCBTcXVhZCIsICJIZXh0ZWNoIiwgIlN1cmZlciIsICJNYWQgU2NpZW50aXN0IiwgIkF1Z21lbnRlZCIsICJTbm93IERheSIsICJTU1cifSwNCglbIlNpb24iXSA9IHsiQ2xhc3NpYyIsICJIZXh0ZWNoIiwgIkJhcmJhcmlhbiIsICJMdW1iZXJqYWNrIiwgIldhcm1vbmdlciJ9LA0KCVsiU2l2aXIiXSA9IHsiQ2xhc3NpYyIsICJXYXJyaW9yIFByaW5jZXNzIiwgIlNwZWN0YWN1bGFyIiwgIkh1bnRyZXNzIiwgIkJhbmRpdCIsICJQQVgiLCAiU25vd3N0b3JtIiwgIldhcmRlbiIsICJWaWN0b3Jpb3VzIn0sDQoJWyJTa2FybmVyIl0gPSB7IkNsYXNzaWMiLCAiU2FuZHNjb3VyZ2UiLCAiRWFydGhydW5lIiwgIkJhdHRsZWNhc3QgQWxwaGEiLCAiR3VhcmRpYW4gb2YgdGhlIFNhbmRzIn0sDQoJWyJTb25hIl0gPSB7IkNsYXNzaWMiLCAiTXVzZSIsICJQZW50YWtpbGwiLCAiU2lsZW50IE5pZ2h0IiwgIkd1cWluIiwgIkFyY2FkZSIsICJESiJ9LA0KCVsiU29yYWthIl0gPSB7IkNsYXNzaWMiLCAiRHJ5YWQiLCAiRGl2aW5lIiwgIkNlbGVzdGluZSIsICJSZWFwZXIiLCAiT3JkZXIgb2YgdGhlIEJhbmFuYSJ9LA0KCVsiU3dhaW4iXSA9IHsiQ2xhc3NpYyIsICJOb3J0aGVybiBGcm9udCIsICJCaWxnZXdhdGVyIiwgIlR5cmFudCJ9LA0KCVsiU3luZHJhIl0gPSB7IkNsYXNzaWMiLCAiSnVzdGljYXIiLCAiQXRsYW50ZWFuIiwgIlF1ZWVuIG9mIERpYW1vbmRzIn0sDQoJLS0gVA0KCVsiVGFobUtlbmNoIl0gPSB7IkNsYXNzaWMiLCAiTWFzdGVyIENoZWYifSwNCglbIlRhbG9uIl0gPSB7IkNsYXNzaWMiLCAiUmVuZWdhZGUiLCAiQ3JpbXNvbiBFbGl0ZSIsICJEcmFnb25ibGFkZSIsICJTU1cifSwNCglbIlRhcmljIl0gPSB7IkNsYXNzaWMiLCAiRW1lcmFsZCIsICJBcm1vciBvZiB0aGUgRmlmdGggQWdlIiwgIkJsb29kc3RvbmUifSwNCglbIlRlZW1vIl0gPSB7IkNsYXNzaWMiLCAiSGFwcHkgRWxmIiwgIlJlY29uIiwgIkJhZGdlciIsICJBc3Ryb25hdXQiLCAiQ290dG9udGFpbCIsICJTdXBlciIsICJQYW5kYSIsICJPbWVnYSBTcXVhZCJ9LA0KCVsiVGhyZXNoIl0gPSB7IkNsYXNzaWMiLCAiRGVlcCBUZXJyb3IiLCAiQ2hhbXBpb25zaGlwIiwgIkJsb29kIE1vb24iLCAiU1NXIn0sDQoJWyJUcmlzdGFuYSJdID0geyJDbGFzc2ljIiwgIlJpb3QgR2lybCIsICJFYXJuZXN0IEVsZiIsICJGaXJlZmlnaHRlciIsICJHdWVyaWxsYSIsICJCdWNjYW5lZXIiLCAiUm9ja2V0IEdpcmwiLCAiQ2hyb21hIFBhY2s6IE5hdnkiLCAiQ2hyb21hIFBhY2s6IFB1cnBsZSIsICJDaHJvbWEgUGFjazogT3JhbmdlIiwgIkRyYWdvbiBUcmFpbmVyIn0sDQoJWyJUcnVuZGxlIl0gPSB7IkNsYXNzaWMiLCAiTGlsJyBTbHVnZ2VyIiwgIkp1bmt5YXJkIiwgIlRyYWRpdGlvbmFsIiwgIkNvbnN0YWJsZSJ9LA0KCVsiVHJ5bmRhbWVyZSJdID0geyJDbGFzc2ljIiwgIkhpZ2hsYW5kIiwgIktpbmciLCAiVmlraW5nIiwgIkRlbW9uYmxhZGUiLCAiU3VsdGFuIiwgIldhcnJpbmcgS2luZ2RvbXMiLCAiTmlnaHRtYXJlIn0sDQoJWyJUd2lzdGVkRmF0ZSJdID0geyJDbGFzc2ljIiwgIlBBWCIsICJKYWNrIG9mIEhlYXJ0cyIsICJUaGUgTWFnbmlmaWNlbnQiLCAiVGFuZ28iLCAiSGlnaCBOb29uIiwgIk11c2tldGVlciIsICJVbmRlcndvcmxkIiwgIlJlZCBDYXJkIiwgIkN1dHB1cnNlIn0sDQoJWyJUd2l0Y2giXSA9IHsiQ2xhc3NpYyIsICJLaW5ncGluIiwgIldoaXN0bGVyIFZpbGxhZ2UiLCAiTWVkaWV2YWwiLCAiR2FuZ3N0ZXIiLCAiVmFuZGFsIiwgIlBpY2twb2NrZXQiLCAiU1NXIn0sDQoJLS0gVQ0KCVsiVWR5ciJdID0geyJDbGFzc2ljIiwgIkJsYWNrIEJlbHQiLCAiUHJpbWFsIiwgIlNwaXJpdCBHdWFyZCIsICJEZWZpbml0ZWx5IE5vdCJ9LA0KCVsiVXJnb3QiXSA9IHsiQ2xhc3NpYyIsICJHaWFudCBFbmVteSBDcmFiZ290IiwgIkJ1dGNoZXIiLCAiQmF0dGxlY2FzdCJ9LA0KCS0tIFYNCglbIlZhcnVzIl0gPSB7IkNsYXNzaWMiLCAiQmxpZ2h0IENyeXN0YWwiLCAiQXJjbGlnaHQiLCAiQXJjdGljIE9wcyIsICJIZWFydHNlZWtlciIsICJTd2lmdGJvbHQifSwNCglbIlZheW5lIl0gPSB7IkNsYXNzaWMiLCAiVmluZGljYXRvciIsICJBcmlzdG9jcmF0IiwgIkRyYWdvbnNsYXllciIsICJIZWFydHNlZWtlciIsICJTS1QgVDEiLCAiQXJjbGlnaHQiLCAiQ2hyb21hIFBhY2s6IEdyZWVuIiwgIkNocm9tYSBQYWNrOiBSZWQiLCAiQ2hyb21hIFBhY2s6IFNpbHZlciJ9LA0KCVsiVmVpZ2FyIl0gPSB7IkNsYXNzaWMiLCAiV2hpdGUgTWFnZSIsICJDdXJsaW5nIiwgIlZlaWdhciBHcmV5YmVhcmQiLCAiTGVwcmVjaGF1biIsICJCYXJvbiBWb24iLCAiU3VwZXJiIFZpbGxhaW4iLCAiQmFkIFNhbnRhIiwgIkZpbmFsIEJvc3MifSwNCglbIlZlbGtveiJdID0geyJDbGFzc2ljIiwgIkJhdHRsZWNhc3QiLCAiQXJjbGlnaHQifSwNCglbIlZpIl0gPSB7IkNsYXNzaWMiLCAiTmVvbiBTdHJpa2UiLCAiT2ZmaWNlciIsICJEZWJvbmFpciIsICJEZW1vbiJ9LA0KCVsiVmlrdG9yIl0gPSB7IkNsYXNzaWMiLCAiRnVsbCBNYWNoaW5lIiwgIlByb3RvdHlwZSIsICJDcmVhdG9yIn0sDQoJWyJWbGFkaW1pciJdID0geyJDbGFzc2ljIiwgIkNvdW50IiwgIk1hcnF1aXMiLCAiTm9zZmVyYXR1IiwgIlZhbmRhbCIsICJCbG9vZCBMb3JkIiwgIlNvdWxzdGVhbGVyIiwgIkFjYWRlbXkifSwNCglbIlZvbGliZWFyIl0gPSB7IkNsYXNzaWMiLCAiVGh1bmRlciBMb3JkIiwgIk5vcnRoZXJuIFN0b3JtIiwgIlJ1bmVndWFyZCIsICJDYXB0YWluIn0sDQoJLS0gVw0KCVsiV2Fyd2ljayJdID0geyJDbGFzc2ljIiwgIkdyZXkiLCAiVXJmIHRoZSBNYW5hdGVlIiwgIkJpZyBCYWQiLCAiVHVuZHJhIEh1bnRlciIsICJGZXJhbCIsICJGaXJlZmFuZyIsICJIeWVuYSIsICJNYXJhdWRlciJ9LA0KCVsiTW9ua2V5S2luZyJdID0geyJDbGFzc2ljIiwgIlZvbGNhbmljIiwgIkdlbmVyYWwiLCAiSmFkZSBEcmFnb24iLCAiVW5kZXJ3b3JsZCIsIlJhZGlhbnQifSwNCgktLSBYDQoJWyJYZXJhdGgiXSA9IHsiQ2xhc3NpYyIsICJSdW5lYm9ybiIsICJCYXR0bGVjYXN0IiwgIlNjb3JjaGVkIEVhcnRoIiwgIkd1YXJkaWFuIG9mIHRoZSBTYW5kcyJ9LA0KCVsiWGluWmhhbyJdID0geyJDbGFzc2ljIiwgIkNvbW1hbmRvIiwgIkltcGVyaWFsIiwgIlZpc2Nlcm8iLCAiV2luZ2VkIEh1c3NhciIsICJXYXJyaW5nIEtpbmdkb21zIiwgIlNlY3JldCBBZ2VudCJ9LA0KCS0tIFkNCglbIllhc3VvIl0gPSB7IkNsYXNzaWMiLCAiSGlnaCBOb29uIiwgIlBST0pFQ1QifSwNCglbIllvcmljayJdID0geyJDbGFzc2ljIiwgIlVuZGVydGFrZXIiLCAiUGVudGFraWxsIn0sDQoJLS0gWg0KCVsiWmFjIl0gPSB7IkNsYXNzaWMiLCAiU3BlY2lhbCBXZWFwb24iLCAiUG9vbCBQYXJ0eSIsICJDaHJvbWEgUGFjazogT3JhbmdlIiwgIkNocm9tYSBQYWNrOiBCdWJibGVndW0iLCAiQ2hyb21hIFBhY2s6IEhvbmV5In0sDQoJWyJaZWQiXSA9IHsiQ2xhc3NpYyIsICJTaG9ja2JsYWRlIiwgIlNLVCBUMSIsICJQUk9KRUNUIn0sDQoJWyJaaWdncyJdID0geyJDbGFzc2ljIiwgIk1hZCBTY2llbnRpc3QiLCAiTWFqb3IiLCAiUG9vbCBQYXJ0eSIsICJTbm93IERheSIsICJNYXN0ZXIgQXJjYW5pc3QifSwNCglbIlppbGVhbiJdID0geyJDbGFzc2ljIiwgIk9sZCBTYWludCIsICJHcm9vdnkiLCAiU2h1cmltYSBEZXNlcnQiLCAiVGltZSBNYWNoaW5lIiwgIkJsb29kIE1vb24ifSwNCglbIlp5cmEiXSA9IHsiQ2xhc3NpYyIsICJXaWxkZmlyZSIsICJIYXVudGVkIiwgIlNLVCBUMSJ9LA0KfQ0KDQpTa2luQ2hhbmdlciA9IHNjcmlwdENvbmZpZygiU2tpbkNoYW5nZXIgU2tpbiBDaGFuZ2VyIiwgIlNraW5DaGFuZ2VyIFNraW4gQ2hhbmdlciIpDQpTa2luQ2hhbmdlcjphZGRTdWJNZW51KCJTZXR0aW5ncyIsICJTZXR0aW5ncyIpDQpTa2luQ2hhbmdlci5TZXR0aW5nczphZGRTdWJNZW51KCJNeSBIZXJvIiwgIm1lIikNClNraW5DaGFuZ2VyLlNldHRpbmdzLm1lOmFkZFBhcmFtKCJtZSIsICJDaGFuZ2UgIi4ubXlIZXJvLmNoYXJOYW1lLi4iIFNraW4iLCBTQ1JJUFRfUEFSQU1fTElTVCwgMiwgU2tpbk5hbWVzW215SGVyby5jaGFyTmFtZV0pDQpTa2luQ2hhbmdlci5TZXR0aW5ncy5tZTpzZXRDYWxsYmFjaygibWUiLCBmdW5jdGlvbihWYWwpIFNldFNraW4obXlIZXJvLCBWYWwgLSAxKSBlbmQpDQpTa2luQ2hhbmdlci5TZXR0aW5nczphZGRTdWJNZW51KCJFbmVtaWVzIiwgImVuZW15IikNClNraW5DaGFuZ2VyLlNldHRpbmdzOmFkZFN1Yk1lbnUoIkFsbGllcyIsICJhbGx5IikNCmZvciBpID0gMSw2IGRvDQoJaWYgR2V0RW5lbXlIZXJvZXMoKVtpXSB+PSBuaWwgdGhlbg0KCQlTa2luQ2hhbmdlci5TZXR0aW5ncy5lbmVteTphZGRQYXJhbSgiRW5lbXlOdW1iZXIiLi5pLCAiQ2hhbmdlICIuLkdldEVuZW15SGVyb2VzKClbaV0uY2hhck5hbWUuLiIgU2tpbiIsIFNDUklQVF9QQVJBTV9MSVNULCAyLCBTa2luTmFtZXNbR2V0RW5lbXlIZXJvZXMoKVtpXS5jaGFyTmFtZV0pDQoJCVNraW5DaGFuZ2VyLlNldHRpbmdzLmVuZW15OnNldENhbGxiYWNrKCJFbmVteU51bWJlciIuLmksIGZ1bmN0aW9uKFZhbCkgU2V0U2tpbihHZXRFbmVteUhlcm9lcygpW2ldLCBWYWwgLSAxKSBlbmQpDQoJZW5kDQoJaWYgR2V0QWxseUhlcm9lcygpW2ldIH49IG5pbCB0aGVuDQoJCVNraW5DaGFuZ2VyLlNldHRpbmdzLmFsbHk6YWRkUGFyYW0oIkFsbHlOdW1iZXIiLi5pLCAiQ2hhbmdlICIuLkdldEFsbHlIZXJvZXMoKVtpXS5jaGFyTmFtZS4uIiBTa2luIiwgU0NSSVBUX1BBUkFNX0xJU1QsIDIsIFNraW5OYW1lc1tHZXRBbGx5SGVyb2VzKClbaV0uY2hhck5hbWVdKQ0KCQlTa2luQ2hhbmdlci5TZXR0aW5ncy5hbGx5OnNldENhbGxiYWNrKCJBbGx5TnVtYmVyIi4uaSwgZnVuY3Rpb24oVmFsKSBTZXRTa2luKEdldEFsbHlIZXJvZXMoKVtpXSwgVmFsIC0gMSkgZW5kKQ0KCWVuZA0KZW5k"))
+local Version = "1.00"
+function Update()
+	if GetGameTimer() > 120 then print("Game is already progressing, skipping Auto Update") return end
+
+	local UpdateHost = "raw.githubusercontent.com"
+	local ServerPath = "/MrJuicyLemon/BoL/master/"
+	local ServerFileName = "GlobalSkinChanger.lua"
+	local ServerVersionFileName = "GlobalSkinChanger.version"
+
+	DL = Download()
+	local ServerVersionDATA = GetWebResult("raw.githubusercontent.com" , ServerPath..ServerVersionFileName)
+	if ServerVersionDATA then
+		local ServerVersion = tonumber(ServerVersionDATA)
+		if ServerVersion then
+			if ServerVersion > tonumber(Version) then
+				print("Updating, don't press F9")
+				DL:newDL(UpdateHost, ServerPath..ServerFileName, ServerFileName, LIB_PATH, function ()
+					print("Skin Changer updated, please reload")
+				end)
+			end
+		else
+			print("An error occured, while updating, please reload")
+		end
+	else
+		print("Could not connect to update Server")
+	end
+end
+
+class "Download"
+function Download:__init()
+	socket = require("socket")
+	self.aktivedownloads = {}
+	self.callbacks = {}
+
+	AddTickCallback(function ()
+		self:RemoveDone()
+	end)
+
+	class("Async")
+	function Async:__init(host, filepath, localname, drawoffset, localpath)
+		self.progress = 0
+		self.host = host
+		self.filepath = filepath
+		self.localname = localname
+		self.offset = drawoffset
+		self.localpath = localpath
+		self.CRLF = '\r\n'
+
+		self.headsocket = socket.tcp()
+		self.headsocket:settimeout(1)
+		self.headsocket:connect(self.host, 80)
+		self.headsocket:send('HEAD '..self.filepath..' HTTP/1.1'.. self.CRLF ..'Host: '..self.host.. self.CRLF ..'User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'.. self.CRLF .. self.CRLF)
+
+		self.HEADdata = ""
+		self.DLdata = ""
+		self.StartedDownload = false
+		self.canDL = true
+
+		AddTickCallback(function ()
+			self:tick()
+		end)
+		AddDrawCallback(function ()
+			self:draw()
+		end)
+	end
+
+	function Async:tick()
+		if self.progress == 100 then return end
+		if self.HEADcStatus ~= "timeout" and self.HEADcStatus ~= "closed" then
+			self.HEADfString, self.HEADcStatus, self.HEADpString = self.headsocket:receive(16);
+			if self.HEADfString then
+				self.HEADdata = self.HEADdata..self.HEADfString
+			elseif self.HEADpString and #self.HEADpString > 0 then
+				self.HEADdata = self.HEADdata..self.HEADpString
+			end
+		elseif self.HEADcStatus == "timeout" then
+			self.headsocket:close()
+			--Find Lenght
+			local begin = string.find(self.HEADdata, "Length: ")
+			if begin then
+				self.HEADdata = string.sub(self.HEADdata,begin+8)
+				local n = 0
+				local _break = false
+				for i=1, #self.HEADdata do
+					local c = tonumber(string.sub(self.HEADdata,i,i))
+					if c and _break == false then
+						n = n+1
+					else
+						_break = true
+					end
+				end
+				self.HEADdata = string.sub(self.HEADdata,1,n)
+				self.StartedDownload = true
+				self.HEADcStatus = "closed"
+			end
+		end
+		if self.HEADcStatus == "closed" and self.StartedDownload == true and self.canDL == true then --Double Check
+			self.canDL = false
+			self.DLsocket = socket.tcp()
+			self.DLsocket:settimeout(1)
+			self.DLsocket:connect(self.host, 80)
+			--Start Main Download
+			self.DLsocket:send('GET '..self.filepath..' HTTP/1.1'.. self.CRLF ..'Host: '..self.host.. self.CRLF ..'User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'.. self.CRLF .. self.CRLF)
+		end
+		
+		if self.DLsocket and self.DLcStatus ~= "timeout" and self.DLcStatus ~= "closed" then
+			self.DLfString, self.DLcStatus, self.DLpString = self.DLsocket:receive(1024);
+			
+			if ((self.DLfString) or (self.DLpString and #self.DLpString > 0)) then
+				self.DLdata = self.DLdata .. (self.DLfString or self.DLpString)
+			end
+
+		elseif self.DLcStatus and self.DLcStatus == "timeout" then
+			self.DLsocket:close()
+			self.DLcStatus = "closed"
+			self.DLdata = string.sub(self.DLdata,#self.DLdata-tonumber(self.HEADdata)+1)
+
+			local file = io.open(self.localpath.."\\"..self.localname, "w+b")
+			file:write(self.DLdata)
+			file:close()
+			self.progress = 100
+		end
+
+		if self.progress ~= 100 and self.DLdata and #self.DLdata > 0 then
+			self.progress = (#self.DLdata/tonumber(self.HEADdata))*100
+		end
+	end
+
+	function Async:draw()
+		if self.progress < 100 then
+			DrawTextA("Downloading: "..self.localname,15,50,35+self.offset)
+			DrawRectangleOutline(49,50+self.offset,250,20, ARGB(255,255,255,255),1)
+			if self.progress ~= 100 then
+				DrawLine(50,60+self.offset,50+(2.5*self.progress),60+self.offset,18,ARGB(150,255-self.progress*2.5,self.progress*2.5,255-self.progress*2.5))
+				DrawTextA(tostring(math.round(self.progress).." %"), 15,150,52+self.offset)
+			end
+		end
+	end
+
+end
+
+function Download:newDL(host, file, name, path, callback)
+	local offset = (#self.aktivedownloads+1)*40
+	self.aktivedownloads[#self.aktivedownloads+1] = Async(host, file, name, offset-40, path)
+	if not callback then
+		callback = (function ()
+		end)
+	end
+
+	self.callbacks[#self.callbacks+1] = callback
+
+end
+
+function Download:RemoveDone()
+	if #self.aktivedownloads == 0 then return end
+	local x = {}
+	for k, v in pairs(self.aktivedownloads) do
+		if math.round(v.progress) < 100 then
+			v.offset = k*40-40
+			x[#x+1] = v
+		else
+			self.callbacks[k]()
+		end
+	end
+	self.aktivedownloads = {}
+	self.aktivedownloads = x
+end
+
+SkinNames = {
+	["Aatrox"] = {"Classic", "Justicar", "Mecha", "Sea Hunter"},
+	["Ahri"] = {"Classic", "Dynasty", "Midnight", "Foxfire", "Popstar", "Challenger", "Academy"},
+	["Akali"] = {"Classic", "Stinger", "Crimson", "All-star", "Nurse", "Blood Moon", "Silverfang", "Headhunter"},
+	["Alistar"] = {"Classic", "Black", "Golden", "Matador", "Longhorn", "Unchained", "Infernal", "Sweeper", "Marauder"},
+	["Amumu"] = {"Classic", "Pharaoh", "Vancouver", "Emumu", "Re-Gifted", "Almost-Prom King", "Little Knight", "Sad Robot", "Surprise Party"},
+	["Anivia"] = {"Classic", "Team Spirit", "Bird of Prey", "Noxus Hunter", "Hextech", "Blackfrost", "Prehistoric"},
+	["Annie"] = {"Classic", "Goth", "Red Riding", "Annie in Wonderland", "Prom Queen", "Frostfire", "Reverse", "FrankenTibbers", "Panda", "Sweetheart"},
+	["Ashe"] = {"Classic", "Freljord", "Sherwood Forest", "Woad", "Queen", "Amethyst", "Heartseeker", "Marauder"},
+	["Azir"] = {"Classic", "Galactic", "Gravelord"},
+	-- B
+	["Bard"] = {"Classic", "Elderwood", "Chroma Pack: Marigold", "Chroma Pack: Ivy", "Chroma Pack: Sage"},
+	["Blitzcrank"] = {"Classic", "Rusty", "Goalkeeper", "Boom Boom", "Piltover Customs", "Definitely Not", "iBlitzcrank", "Riot", "Chroma Pack: Molten", "Chroma Pack: Cobalt", "Chroma Pack: Gunmetal", "Battle Boss"},
+	["Brand"] = {"Classic", "Apocalyptic", "Vandal", "Cryocore", "Zombie", "Spirit Fire"},
+	["Braum"] = {"Classic", "Dragonslayer", "El Tigre", "Lionheart"},
+	-- C
+	["Caitlyn"] = {"Classic", "Resistance", "Sheriff", "Safari", "Arctic Warfare", "Officer", "Headhunter", "Chroma Pack: Pink", "Chroma Pack: Green", "Chroma Pack: Blue","Lunar"},
+	["Cassiopeia"] = {"Classic", "Desperada", "Siren", "Mythic", "Jade Fang", "Chroma Pack: Day", "Chroma Pack: Dusk", "Chroma Pack: Night"},
+	["Chogath"] = {"Classic", "Nightmare", "Gentleman", "Loch Ness", "Jurassic", "Battlecast Prime", "Prehistoric"},
+	["Corki"] = {"Classic", "UFO", "Ice Toboggan", "Red Baron", "Hot Rod", "Urfrider", "Dragonwing", "Fnatic"},
+	-- D
+	["Darius"] = {"Classic", "Lord", "Bioforge", "Woad King", "Dunkmaster", "Chroma Pack: Black Iron", "Chroma Pack: Bronze", "Chroma Pack: Copper", "Academy"},
+	["Diana"] = {"Classic", "Dark Valkyrie", "Lunar Goddess"},
+	["DrMundo"] = {"Classic", "Toxic", "Mr. Mundoverse", "Corporate Mundo", "Mundo Mundo", "Executioner Mundo", "Rageborn Mundo", "TPA Mundo", "Pool Party"},
+	["Draven"] = {"Classic", "Soul Reaver", "Gladiator", "Primetime", "Pool Party"},
+	-- E
+	["Ekko"] = {"Classic", "Sandstorm", "Academy"},
+	["Elise"] = {"Classic", "Death Blossom", "Victorious", "Blood Moon"},
+	["Evelynn"] = {"Classic", "Shadow", "Masquerade", "Tango", "Safecracker"},
+	["Ezreal"] = {"Classic", "Nottingham", "Striker", "Frosted", "Explorer", "Pulsefire", "TPA", "Debonair", "Ace of Spades"},
+	-- F
+	["FiddleSticks"] = {"Classic", "Spectral", "Union Jack", "Bandito", "Pumpkinhead", "Fiddle Me Timbers", "Surprise Party", "Dark Candy", "Risen"},
+	["Fiora"] = {"Classic", "Royal Guard", "Nightraven", "Headmistress", "PROJECT"},
+	["Fizz"] = {"Classic", "Atlantean", "Tundra", "Fisherman", "Void", "Chroma Pack: Orange", "Chroma Pack: Black", "Chroma Pack: Red", "Cottontail"},
+	-- G
+	["Galio"] = {"Classic", "Enchanted", "Hextech", "Commando", "Gatekeeper", "Debonair"},
+	["Gangplank"] = {"Classic", "Spooky", "Minuteman", "Sailor", "Toy Soldier", "Special Forces", "Sultan", "Captain"},
+	["Garen"] = {"Classic", "Sanguine", "Desert Trooper", "Commando", "Dreadknight", "Rugged", "Steel Legion", "Chroma Pack: Garnet", "Chroma Pack: Plum", "Chroma Pack: Ivory", "Rogue Admiral"},
+	["Gnar"] = {"Classic", "Dino", "Gentleman"},
+	["Gragas"] = {"Classic", "Scuba", "Hillbilly", "Santa", "Gragas, Esq.", "Vandal", "Oktoberfest", "Superfan", "Fnatic", "Caskbreaker"},
+	["Graves"] = {"Classic", "Hired Gun", "Jailbreak", "Mafia", "Riot", "Pool Party", "Cutthroat"},
+	-- H
+	["Hecarim"] = {"Classic", "Blood Knight", "Reaper", "Headless", "Arcade", "Elderwood"},
+	["Heimerdinger"] = {"Classic", "Alien Invader", "Blast Zone", "Piltover Customs", "Snowmerdinger", "Hazmat"},
+	-- I
+	["Illaoi"] = {"Classic", "Void Bringer"},
+	["Irelia"] = {"Classic", "Nightblade", "Aviator", "Infiltrator", "Frostblade", "Order of the Lotus"},
+	-- J
+	["Janna"] = {"Classic", "Tempest", "Hextech", "Frost Queen", "Victorious", "Forecast", "Fnatic"},
+	["JarvanIV"] = {"Classic", "Commando", "Dragonslayer", "Darkforge", "Victorious", "Warring Kingdoms", "Fnatic"},
+	["Jax"] = {"Classic", "The Mighty", "Vandal", "Angler", "PAX", "Jaximus", "Temple", "Nemesis", "SKT T1", "Chroma Pack: Cream", "Chroma Pack: Amber", "Chroma Pack: Brick", "Warden"},
+	["Jayce"] = {"Classic", "Full Metal", "Debonair", "Forsaken"},
+	["Jinx"] = {"Classic", "Mafia", "Firecracker", "Slayer"},
+	-- K
+	["Kalista"] = {"Classic", "Blood Moon", "Championship"},
+	["Karma"] = {"Classic", "Sun Goddess", "Sakura", "Traditional", "Order of the Lotus", "Warden"},
+	["Karthus"] = {"Classic", "Phantom", "Statue of", "Grim Reaper", "Pentakill", "Fnatic", "Chroma Pack: Burn", "Chroma Pack: Blight", "Chroma Pack: Frostbite"},
+	["Kassadin"] = {"Classic", "Festival", "Deep One", "Pre-Void", "Harbinger", "Cosmic Reaver"},
+	["Katarina"] = {"Classic", "Mercenary", "Red Card", "Bilgewater", "Kitty Cat", "High Command", "Sandstorm", "Slay Belle", "Warring Kingdoms"},
+	["Kayle"] = {"Classic", "Silver", "Viridian", "Unmasked", "Battleborn", "Judgment", "Aether Wing", "Riot"},
+	["Kennen"] = {"Classic", "Deadly", "Swamp Master", "Karate", "Kennen M.D.", "Arctic Ops"},
+	["Khazix"] = {"Classic", "Mecha", "Guardian of the Sands"},
+	["Kindred"] = {"Classic", "Shadowfire"},
+	["KogMaw"] = {"Classic", "Caterpillar", "Sonoran", "Monarch", "Reindeer", "Lion Dance", "Deep Sea", "Jurassic", "Battlecast"},
+	-- L
+	["Leblanc"] = {"Classic", "Wicked", "Prestigious", "Mistletoe", "Ravenborn"},
+	["LeeSin"] = {"Classic", "Traditional", "Acolyte", "Dragon Fist", "Muay Thai", "Pool Party", "SKT T1", "Chroma Pack: Black", "Chroma Pack: Blue", "Chroma Pack: Yellow", "Knockout"},
+	["Leona"] = {"Classic", "Valkyrie", "Defender", "Iron Solari", "Pool Party", "Chroma Pack: Pink", "Chroma Pack: Azure", "Chroma Pack: Lemon", "PROJECT"},
+	["Lissandra"] = {"Classic", "Bloodstone", "Blade Queen"},
+	["Lucian"] = {"Classic", "Hired Gun", "Striker", "Chroma Pack: Yellow", "Chroma Pack: Red", "Chroma Pack: Blue", "PROJECT"},
+	["Lulu"] = {"Classic", "Bittersweet", "Wicked", "Dragon Trainer", "Winter Wonder", "Pool Party"},
+	["Lux"] = {"Classic", "Sorceress", "Spellthief", "Commando", "Imperial", "Steel Legion", "Star Guardian"},
+	-- M
+	["Malphite"] = {"Classic", "Shamrock", "Coral Reef", "Marble", "Obsidian", "Glacial", "Mecha", "Ironside"},
+	["Malzahar"] = {"Classic", "Vizier", "Shadow Prince", "Djinn", "Overlord", "Snow Day"},
+	["Maokai"] = {"Classic", "Charred", "Totemic", "Festive", "Haunted", "Goalkeeper"},
+	["MasterYi"] = {"Classic", "Assassin", "Chosen", "Ionia", "Samurai Yi", "Headhunter", "Chroma Pack: Gold", "Chroma Pack: Aqua", "Chroma Pack: Crimson", "PROJECT"},
+	["MissFortune"] = {"Classic", "Cowgirl", "Waterloo", "Secret Agent", "Candy Cane", "Road Warrior", "Mafia", "Arcade", "Captain"},
+	["Mordekaiser"] = {"Classic", "Dragon Knight", "Infernal", "Pentakill", "Lord", "King of Clubs"},
+	["Morgana"] = {"Classic", "Exiled", "Sinful Succulence", "Blade Mistress", "Blackthorn", "Ghost Bride", "Victorious", "Chroma Pack: Toxic", "Chroma Pack: Pale", "Chroma Pack: Ebony","Lunar"},
+	-- N
+	["Nami"] = {"Classic", "Koi", "River Spirit", "Urf", "Chroma Pack: Sunbeam", "Chroma Pack: Smoke", "Chroma Pack: Twilight"},
+	["Nasus"] = {"Classic", "Galactic", "Pharaoh", "Dreadknight", "Riot K-9", "Infernal", "Archduke", "Chroma Pack: Burn", "Chroma Pack: Blight", "Chroma Pack: Frostbite",},
+	["Nautilus"] = {"Classic", "Abyssal", "Subterranean", "AstroNautilus", "Warden"},
+	["Nidalee"] = {"Classic", "Snow Bunny", "Leopard", "French Maid", "Pharaoh", "Bewitching", "Headhunter", "Warring Kingdoms"},
+	["Nocturne"] = {"Classic", "Frozen Terror", "Void", "Ravager", "Haunting", "Eternum"},
+	["Nunu"] = {"Classic", "Sasquatch", "Workshop", "Grungy", "Nunu Bot", "Demolisher", "TPA", "Zombie"},
+	-- O
+	["Olaf"] = {"Classic", "Forsaken", "Glacial", "Brolaf", "Pentakill", "Marauder"},
+	["Orianna"] = {"Classic", "Gothic", "Sewn Chaos", "Bladecraft", "TPA", "Winter Wonder"},
+	-- P
+	["Pantheon"] = {"Classic", "Myrmidon", "Ruthless", "Perseus", "Full Metal", "Glaive Warrior", "Dragonslayer", "Slayer"},
+	["Poppy"] = {"Classic", "Noxus", "Lollipoppy", "Blacksmith", "Ragdoll", "Battle Regalia", "Scarlet Hammer"},
+	-- Q
+	["Quinn"] = {"Classic", "Phoenix", "Woad Scout", "Corsair"},
+	-- R
+	["Rammus"] = {"Classic", "King", "Chrome", "Molten", "Freljord", "Ninja", "Full Metal", "Guardian of the Sands"},
+	["Reksai"] = {"Classic", "Eternum", "Pool Party"},
+	["Renekton"] = {"Classic", "Galactic", "Outback", "Bloodfury", "Rune Wars", "Scorched Earth", "Pool Party", "Scorched Earth", "Prehistoric"},
+	["Rengar"] = {"Classic", "Headhunter", "Night Hunter", "SSW"},
+	["Riven"] = {"Classic", "Redeemed", "Crimson Elite", "Battle Bunny", "Championship", "Dragonblade", "Arcade"},
+	["Rumble"] = {"Classic", "Rumble in the Jungle", "Bilgerat", "Super Galaxy"},
+	["Ryze"] = {"Classic", "Human", "Tribal", "Uncle", "Triumphant", "Professor", "Zombie", "Dark Crystal", "Pirate", "Whitebeard"},
+	-- S
+	["Sejuani"] = {"Classic", "Sabretusk", "Darkrider", "Traditional", "Bear Cavalry", "Poro Rider"},
+	["Shaco"] = {"Classic", "Mad Hatter", "Royal", "Nutcracko", "Workshop", "Asylum", "Masked", "Wild Card"},
+	["Shen"] = {"Classic", "Frozen", "Yellow Jacket", "Surgeon", "Blood Moon", "Warlord", "TPA"},
+	["Shyvana"] = {"Classic", "Ironscale", "Boneclaw", "Darkflame", "Ice Drake", "Championship"},
+	["Singed"] = {"Classic", "Riot Squad", "Hextech", "Surfer", "Mad Scientist", "Augmented", "Snow Day", "SSW"},
+	["Sion"] = {"Classic", "Hextech", "Barbarian", "Lumberjack", "Warmonger"},
+	["Sivir"] = {"Classic", "Warrior Princess", "Spectacular", "Huntress", "Bandit", "PAX", "Snowstorm", "Warden", "Victorious"},
+	["Skarner"] = {"Classic", "Sandscourge", "Earthrune", "Battlecast Alpha", "Guardian of the Sands"},
+	["Sona"] = {"Classic", "Muse", "Pentakill", "Silent Night", "Guqin", "Arcade", "DJ"},
+	["Soraka"] = {"Classic", "Dryad", "Divine", "Celestine", "Reaper", "Order of the Banana"},
+	["Swain"] = {"Classic", "Northern Front", "Bilgewater", "Tyrant"},
+	["Syndra"] = {"Classic", "Justicar", "Atlantean", "Queen of Diamonds"},
+	-- T
+	["TahmKench"] = {"Classic", "Master Chef"},
+	["Talon"] = {"Classic", "Renegade", "Crimson Elite", "Dragonblade", "SSW"},
+	["Taric"] = {"Classic", "Emerald", "Armor of the Fifth Age", "Bloodstone"},
+	["Teemo"] = {"Classic", "Happy Elf", "Recon", "Badger", "Astronaut", "Cottontail", "Super", "Panda", "Omega Squad"},
+	["Thresh"] = {"Classic", "Deep Terror", "Championship", "Blood Moon", "SSW"},
+	["Tristana"] = {"Classic", "Riot Girl", "Earnest Elf", "Firefighter", "Guerilla", "Buccaneer", "Rocket Girl", "Chroma Pack: Navy", "Chroma Pack: Purple", "Chroma Pack: Orange", "Dragon Trainer"},
+	["Trundle"] = {"Classic", "Lil' Slugger", "Junkyard", "Traditional", "Constable"},
+	["Tryndamere"] = {"Classic", "Highland", "King", "Viking", "Demonblade", "Sultan", "Warring Kingdoms", "Nightmare"},
+	["TwistedFate"] = {"Classic", "PAX", "Jack of Hearts", "The Magnificent", "Tango", "High Noon", "Musketeer", "Underworld", "Red Card", "Cutpurse"},
+	["Twitch"] = {"Classic", "Kingpin", "Whistler Village", "Medieval", "Gangster", "Vandal", "Pickpocket", "SSW"},
+	-- U
+	["Udyr"] = {"Classic", "Black Belt", "Primal", "Spirit Guard", "Definitely Not"},
+	["Urgot"] = {"Classic", "Giant Enemy Crabgot", "Butcher", "Battlecast"},
+	-- V
+	["Varus"] = {"Classic", "Blight Crystal", "Arclight", "Arctic Ops", "Heartseeker", "Swiftbolt"},
+	["Vayne"] = {"Classic", "Vindicator", "Aristocrat", "Dragonslayer", "Heartseeker", "SKT T1", "Arclight", "Chroma Pack: Green", "Chroma Pack: Red", "Chroma Pack: Silver"},
+	["Veigar"] = {"Classic", "White Mage", "Curling", "Veigar Greybeard", "Leprechaun", "Baron Von", "Superb Villain", "Bad Santa", "Final Boss"},
+	["Velkoz"] = {"Classic", "Battlecast", "Arclight"},
+	["Vi"] = {"Classic", "Neon Strike", "Officer", "Debonair", "Demon"},
+	["Viktor"] = {"Classic", "Full Machine", "Prototype", "Creator"},
+	["Vladimir"] = {"Classic", "Count", "Marquis", "Nosferatu", "Vandal", "Blood Lord", "Soulstealer", "Academy"},
+	["Volibear"] = {"Classic", "Thunder Lord", "Northern Storm", "Runeguard", "Captain"},
+	-- W
+	["Warwick"] = {"Classic", "Grey", "Urf the Manatee", "Big Bad", "Tundra Hunter", "Feral", "Firefang", "Hyena", "Marauder"},
+	["MonkeyKing"] = {"Classic", "Volcanic", "General", "Jade Dragon", "Underworld","Radiant"},
+	-- X
+	["Xerath"] = {"Classic", "Runeborn", "Battlecast", "Scorched Earth", "Guardian of the Sands"},
+	["XinZhao"] = {"Classic", "Commando", "Imperial", "Viscero", "Winged Hussar", "Warring Kingdoms", "Secret Agent"},
+	-- Y
+	["Yasuo"] = {"Classic", "High Noon", "PROJECT"},
+	["Yorick"] = {"Classic", "Undertaker", "Pentakill"},
+	-- Z
+	["Zac"] = {"Classic", "Special Weapon", "Pool Party", "Chroma Pack: Orange", "Chroma Pack: Bubblegum", "Chroma Pack: Honey"},
+	["Zed"] = {"Classic", "Shockblade", "SKT T1", "PROJECT"},
+	["Ziggs"] = {"Classic", "Mad Scientist", "Major", "Pool Party", "Snow Day", "Master Arcanist"},
+	["Zilean"] = {"Classic", "Old Saint", "Groovy", "Shurima Desert", "Time Machine", "Blood Moon"},
+	["Zyra"] = {"Classic", "Wildfire", "Haunted", "SKT T1"},
+}
+
+SkinChanger = scriptConfig("SkinChanger Skin Changer", "SkinChanger Skin Changer")
+SkinChanger:addSubMenu("Settings", "Settings")
+SkinChanger.Settings:addSubMenu("My Hero", "me")
+SkinChanger.Settings.me:addParam("me", "Change "..myHero.charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[myHero.charName])
+SkinChanger.Settings.me:setCallback("me", function(Val) SetSkin(myHero, Val - 1) end)
+SkinChanger.Settings:addSubMenu("Enemies", "enemy")
+SkinChanger.Settings:addSubMenu("Allies", "ally")
+for i = 1,6 do
+	if GetEnemyHeroes()[i] ~= nil then
+		SkinChanger.Settings.enemy:addParam("EnemyNumber"..i, "Change "..GetEnemyHeroes()[i].charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[GetEnemyHeroes()[i].charName])
+		SkinChanger.Settings.enemy:setCallback("EnemyNumber"..i, function(Val) SetSkin(GetEnemyHeroes()[i], Val - 1) end)
+	end
+	if GetAllyHeroes()[i] ~= nil then
+		SkinChanger.Settings.ally:addParam("AllyNumber"..i, "Change "..GetAllyHeroes()[i].charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[GetAllyHeroes()[i].charName])
+		SkinChanger.Settings.ally:setCallback("AllyNumber"..i, function(Val) SetSkin(GetAllyHeroes()[i], Val - 1) end)
+	end
+end
