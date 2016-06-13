@@ -1,6 +1,6 @@
 local Version = "1.00"
 function Update()
-	if GetGameTimer() > 120 then print("Game is already progressing, skipping Auto Update") return end
+	
 
 	local UpdateHost = "raw.githubusercontent.com"
 	local ServerPath = "/MrJuicyLemon/BoL/master/"
