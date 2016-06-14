@@ -596,8 +596,8 @@ function Autolvl()
 	end
 end
 
-function OnTick()
 local LastLevel = 0
+function OnTick()
 	if myHero.level ~= LastLevel then
 		Autolvl()
 		DelayAction(function()
