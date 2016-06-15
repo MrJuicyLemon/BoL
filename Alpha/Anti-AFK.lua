@@ -9,6 +9,14 @@ function OnLoad()
 	    DownloadFile("https://raw.githubusercontent.com/linkpad/BoL/master/Common/MenuConfig.lua?rand="..math.random(1, 10000), LIB_PATH.."MenuConfig.lua", function()
 	      message("Finsihed downloading MenuConfig, please reload script!")
 	  end)
+
+	  if (FileExist(LIB_PATH.."NotificationLib.lua")) then
+	    require 'NotificationLib'
+	  else
+	    message("Downloading NotificationLib, please don't reload script!")
+	    DownloadFile("https://raw.githubusercontent.com/LunarBlue/Bol/master/Libraries/NotificationLib.lua?rand="..math.random(1, 10000), LIB_PATH.."NotificationLib.lua", function()
+	      message("Finsihed downloading NotificationLib, please reload script!")
+	  end)
 	  
 	  if GotMenu == 1 then
 	  	LoadMenu()
@@ -53,10 +61,12 @@ function OnSendChat(p)
 		if p = "AFK ON" then
 			BlockChat()
 			AfkMode = 1
+			NotificationLib:AddTile("AntiAFK", "Mode: On", 3)
 		end
 		if p = "AFK OFF" then
 			BlockChat()
 			AfkMode = 0
+			NotificationLib:AddTile("AntiAFK", "Mode: Off", 3)
 		end
 	end
 end
