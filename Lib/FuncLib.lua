@@ -1,5 +1,6 @@
---author's permission to manipulate it. Thanks Henrique
-
+local func = {
+  --author's permission to manipulate it. Thanks Henrique
+}
 
 local function isCallable(callback)
   local tc = type(callback)
