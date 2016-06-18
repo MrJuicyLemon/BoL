@@ -1,6 +1,6 @@
-local Version = "1.00"
+local Version = "1.00"
 function Update()
-	
+	if GetGameTimer() > 120 then print("Game is already progressing, skipping Auto Update") return end
 
 	local UpdateHost = "raw.githubusercontent.com"
 	local ServerPath = "/MrJuicyLemon/BoL/master/"
@@ -322,20 +322,59 @@ SkinNames = {
 	["Zyra"] = {"Classic", "Wildfire", "Haunted", "SKT T1"},
 }
 
-SkinChanger = scriptConfig("SkinChanger Skin Changer", "SkinChanger Skin Changer")
-SkinChanger:addSubMenu("Settings", "Settings")
-SkinChanger.Settings:addSubMenu("My Hero", "me")
-SkinChanger.Settings.me:addParam("me", "Change "..myHero.charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[myHero.charName])
-SkinChanger.Settings.me:setCallback("me", function(Val) SetSkin(myHero, Val - 1) end)
-SkinChanger.Settings:addSubMenu("Enemies", "enemy")
-SkinChanger.Settings:addSubMenu("Allies", "ally")
-for i = 1,6 do
-	if GetEnemyHeroes()[i] ~= nil then
-		SkinChanger.Settings.enemy:addParam("EnemyNumber"..i, "Change "..GetEnemyHeroes()[i].charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[GetEnemyHeroes()[i].charName])
-		SkinChanger.Settings.enemy:setCallback("EnemyNumber"..i, function(Val) SetSkin(GetEnemyHeroes()[i], Val - 1) end)
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+function message(i)
+  do
+    print(string.format("<font color=\"#FC5743\"><b>Universal Skin Changer Message: </b></font><font color=\"#E53CD4\">"..i.."</font>"))
+  end
+end
+
+function LoadMenu()
+	do
+	print("hi")
+		SkinChanger = MenuConfig("Skin Changer", "Skin Changer")
+		SkinChanger:Menu("Settings", "Settings", "user")
+		SkinChanger.Settings:Section("Skin Changer")
+		SkinChanger.Settings:Menu("me", "My Hero")
+		SkinChanger.Settings.me:DropDown("me", "Change "..myHero.charName.." Skin", 1, SkinNames[myHero.charName], function(Val) SetSkin(myHero, Val - 1) end)
+		SkinChanger.Settings:Menu("ally", "Allies", "gamepad")
+		SkinChanger.Settings:Menu("enemy", "Enemies", "leaf")
+		for i = 1,6 do
+			if GetEnemyHeroes()[i] ~= nil then
+				SkinChanger.Settings.enemy:DropDown("EnemyNumber"..i, "Change "..GetEnemyHeroes()[i].charName.." Skin", 1, SkinNames[GetEnemyHeroes()[i].charName], function(Val) SetSkin(GetEnemyHeroes()[i], Val - 1) end)
+			end
+			if GetAllyHeroes()[i] ~= nil then
+				SkinChanger.Settings.ally:DropDown("AllyNumber"..i, "Change "..GetAllyHeroes()[i].charName.." Skin", 1, SkinNames[GetAllyHeroes()[i].charName], function(Val) SetSkin(GetAllyHeroes()[i], Val - 1) end)
+			end
+		end
 	end
-	if GetAllyHeroes()[i] ~= nil then
-		SkinChanger.Settings.ally:addParam("AllyNumber"..i, "Change "..GetAllyHeroes()[i].charName.." Skin", SCRIPT_PARAM_LIST, 2, SkinNames[GetAllyHeroes()[i].charName])
-		SkinChanger.Settings.ally:setCallback("AllyNumber"..i, function(Val) SetSkin(GetAllyHeroes()[i], Val - 1) end)
+end
+
+function OnLoad()
+local GotMenu = 0
+	if (FileExist(LIB_PATH.."MenuConfig.lua")) then
+		GotMenu = 1
+	  require 'MenuConfig'
+	else
+	  message("Downloading MenuConfig, please don't reload script!")
+	  DownloadFile("https://raw.githubusercontent.com/linkpad/BoL/master/Common/MenuConfig.lua?rand="..math.random(1, 10000), LIB_PATH.."MenuConfig.lua", function() message("Finsihed downloading MenuConfig, please reload script!")
+	  end)
+	end
+	if GotMenu == 1 then
+		LoadMenu()
+	end
+	DelayAction(function() message("Maybe I'm missing some skins, if you find a champion that has not all the skins, post it in the thread and i'll add them :) ") end, 5)
+end
+
+function OnUnLoad()
+	do
+		message("I hope to see you soon! Good day/night")
 	end
 end
