@@ -339,7 +339,6 @@ end
 
 function LoadMenu()
 	do
-	print("hi")
 		SkinChanger = MenuConfig("Skin Changer", "Skin Changer")
 		SkinChanger:Section("Skin Changer")
 		SkinChanger:Menu("me", "My Hero")
