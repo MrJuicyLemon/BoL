@@ -1,4 +1,4 @@
-local Version = "1.00"
+local Version = "1.01"
 
 
 local CopyRight = "MrJuicyLemon"
@@ -566,17 +566,6 @@ LevelOrder = {
 }
 
 
-Universal = scriptConfig("UniversalLeveler", "Universal Leveler")
-Universal:addSubMenu("Settings", "Settings")
-Universal.Settings:addParam("LevelUp", "Level Up Skills", SCRIPT_PARAM_ONOFF, true)
-Universal.Settings:addParam("StartLevel", "Level to enable lvlUP", SCRIPT_PARAM_SLICE, 1, 1, 17)
-Universal.Settings:addParam("autoLvl", "Skill order", SCRIPT_PARAM_LIST, 1, {"Soon"})
-Universal.Settings:addParam("Humanizer", "Enable Level Up Humanizer", SCRIPT_PARAM_ONOFF, true)
-Universal.Settings:addParam("Info", "Author: "..CopyRight, SCRIPT_PARAM_INFO, "")
-Universal.Settings:addSubMenu("Delay", "Delay")
-Universal.Settings.Delay:addParam("Min", "Min level up delay (ms)", SCRIPT_PARAM_SLICE, 255, 100, 399)
-Universal.Settings.Delay:addParam("Max", "Max level up delay (ms)", SCRIPT_PARAM_SLICE, 665, 400, 2000)
-
 function message(i)
   do
     print(string.format("<font color=\"#FC5743\"><b>UniversalLeveler Message: </b></font><font color=\"#E53CD4\">"..i.."</font>"))
@@ -588,7 +577,7 @@ function Autolvl()
 		SkillOrder = LevelOrder[myHero.charName][Universal.Settings.autoLvl][myHero.level]
 		if Universal.Settings.LevelUp and myHero.level >= Universal.Settings.StartLevel then
 		    if Universal.Settings.Humanizer then
-		      DelayAction(function()LevelSpell(SkillOrder) end, math.random(Universal.Settings.Delay.Min, Universal.Settings.Delay.Max))
+		      DelayAction(function()LevelSpell(SkillOrder) end, math.random(1, 2))
 		    else
 		      LevelSpell(SkillOrder)
 		    end
@@ -596,14 +585,157 @@ function Autolvl()
 	end
 end
 
-local LastLevel = 0
+local GotMenu = 0
+function OnLoad()
+	do
+	  if (FileExist(LIB_PATH.."MenuConfig.lua")) then
+	    require 'MenuConfig'
+	    GotMenu = 1
+	  else
+	    message("Downloading MenuConfig, please don't reload script!")
+	    DownloadFile("https://raw.githubusercontent.com/linkpad/BoL/master/Common/MenuConfig.lua?rand="..math.random(1, 10000), LIB_PATH.."MenuConfig.lua", function()
+	      message("Finsihed downloading MenuConfig, please reload script!")
+	  	end)
+	  end
+	  
+	  if GotMenu == 1 then
+	  	LoadMenu()
+	  else
+	  	message("Library is being downloaded, please wait.")
+	  end
+	end
+end
+
+function OnUnLoad()
+	do
+		message("I hope to see you soon! Good day/night")
+	end
+end
+
+function LoadMenu()
+	do
+		Universal = scriptConfig("UniversalLeveler", "Universal Leveler")
+		UniversalMenu = MenuConfig("UniversalLeveler2", "Skill Order")
+		Universal:addSubMenu("Settings", "Settings")
+		Universal.Settings:addParam("LevelUp", "Level Up Skills", SCRIPT_PARAM_ONOFF, true)
+		Universal.Settings:addParam("StartLevel", "Level to enable lvlUP", SCRIPT_PARAM_SLICE, 1, 1, 17)
+		Universal.Settings:addParam("autoLvl", "Skill order", SCRIPT_PARAM_LIST, 1, {"Soon"})
+		Universal.Settings:addParam("Humanizer", "Enable Level Up Humanizer", SCRIPT_PARAM_ONOFF, true)
+		Universal.Settings:addParam("Info", "Author: "..CopyRight, SCRIPT_PARAM_INFO, "")
+		Universal.Settings:addSubMenu("Delay", "Delay")
+		Universal.Settings.Delay:addParam("Min", "Min level up delay (ms)", SCRIPT_PARAM_SLICE, 255, 100, 399)
+		Universal.Settings.Delay:addParam("Max", "Max level up delay (ms)", SCRIPT_PARAM_SLICE, 665, 400, 2000)		
+		UniversalMenu:Info("Author: "..CopyRight, "Info")
+		UniversalMenu:Info("Recommended order (champion.gg): "..table.concat(skill), "Info")
+		UniversalMenu:Info("Recommended order (champion.gg): "..table.concat(number), "Info")
+		UniversalMenu:Info("Press Shift to open Script settings", "Info")
+	end
+end
+
 function OnTick()
+local LastLevel = 0
 	if myHero.level ~= LastLevel then
 		Autolvl()
 		DelayAction(function()
 			LastLevel = myHero.level
 			end, 1)
 	end
+end
+
+
+local socket = require'socket'
+local function MakeRequest(url)
+  local tcp = socket.tcp()
+  tcp:settimeout(5)
+	tcp:connect("champion.gg", "80")
+	tcp:send("GET " .. url .. " HTTP/1.0\r\n" .. [[Host: champion.gg
+User-Agent: hDownload
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: pl,en-US;q=0.7,en;q=0.3
+Cookie: 720plan=R1726442047; path=/;
+Connection: close
+Cache-Control: max-age=0
+
+]])
+    local retval = tcp:receive("*a")
+	
+	repeat until retval ~= nil --??
+
+    if retval ~= nil then
+		tcp:close()
+		return retval
+	else 
+		return "error"
+	end
+	
+end
+
+print("Requesting data...")
+data = MakeRequest("/champion/"..myHero.charName)
+
+start = data:find('selections')+12
+data2 = data:sub(start)
+start = data2:find('selections')+12
+data2 = data2:sub(start)
+
+order = {
+	["Q"] = {},
+	["W"] = {},
+	["E"] = {},
+	["R"] = {}
+}
+number = {
+	"_1",
+	"   _2",
+	"  _3",
+	" _4",
+	"  _5",
+	"  _6",
+	"  _7",
+	"  _8",
+	"  _9",
+	"  _10",
+	"  11",
+	" 12",
+	"  13",
+	" 14",
+	" 15",
+	" 16",
+	" 17",
+	" 18",
+}
+
+local q = 1
+local w = 1
+local e = 1
+local r = 1
+local count = 1
+local current = q
+data2:gsub('<span>(.-)</span>', function(x)
+	if (count <= 72) then
+	if (x:find("Q")) then current = q table.insert(order["Q"], count%18 ~= 0 and count%18 or 18) q = q+1 count = count+1
+	elseif (x:find("W")) then current = w table.insert(order["W"], count%18 ~= 0 and count%18 or 18) w = w+1 count = count+1
+	elseif (x:find("E")) then current = e table.insert(order["E"], count%18 ~= 0 and count%18 or 18) e = e+1 count = count+1
+	elseif (x:find("R")) then current = r table.insert(order["R"], count%18 ~= 0 and count%18 or 18) r = r+1 count = count+1
+	else count = count+1 end
+	end
+end)
+
+
+skill = {}
+for i = 1, #order.Q do
+	skill[order.Q[i]] = "_Q,"
+end
+for i = 1, #order.W do
+	skill[order.W[i]] = "_W,"
+end
+
+for i = 1, #order.E do
+	skill[order.E[i]] = "_E,"
+end
+
+for i = 1, #order.R do
+	skill[order.R[i]] = "_R,"
 end
 
 message("Script loaded succesfully, Good Luck " ..GetUser())
