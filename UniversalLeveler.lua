@@ -626,7 +626,7 @@ function LoadMenu()
 		Universal.Settings.Delay:addParam("Min", "Min level up delay (ms)", SCRIPT_PARAM_SLICE, 255, 100, 399)
 		Universal.Settings.Delay:addParam("Max", "Max level up delay (ms)", SCRIPT_PARAM_SLICE, 665, 400, 2000)		
 		UniversalMenu:Info("Author: "..CopyRight, "Info")
-		UniversalMenu:Info("Recommended order (champion.gg): "..table.concat(skill), "Info")
+		UniversalMenu:Info("Recommended order (champion.gg): "..table.concat(skill, ", "), "Info")
 		UniversalMenu:Info("Recommended order (champion.gg): "..table.concat(number), "Info")
 		UniversalMenu:Info("Press Shift to open Script settings", "Info")
 	end
@@ -724,18 +724,18 @@ end)
 
 skill = {}
 for i = 1, #order.Q do
-	skill[order.Q[i]] = "_Q,"
+	skill[order.Q[i]] = "_Q"
 end
 for i = 1, #order.W do
-	skill[order.W[i]] = "_W,"
+	skill[order.W[i]] = "_W"
 end
 
 for i = 1, #order.E do
-	skill[order.E[i]] = "_E,"
+	skill[order.E[i]] = "_E"
 end
 
 for i = 1, #order.R do
-	skill[order.R[i]] = "_R,"
+	skill[order.R[i]] = "_R"
 end
 
 message("Script loaded succesfully, Good Luck " ..GetUser())
