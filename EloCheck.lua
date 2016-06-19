@@ -244,15 +244,7 @@ for i = 1,6 do
 
 	-----------------
 
-	data = MakeRequest(myHero.name)
-
-	data2 = data:find("description")
-	data = data:sub(data2+22, data2+80)
-
-	info = {}
-	data:gsub('(.-)/', function(x)
-		table.insert(info, x)
-	end)
+	
 
 	----------------------------------
 end
@@ -270,9 +262,6 @@ function OnLoad()
 	  end
 		Elo = MenuConfig("Elo Check", "Elo Check")
 				Elo:Section("Elo Check", ARGB(255, 114, 223, 230))
-				Elo:Menu("me", "My Hero")
-				Elo.me:Info("My Division: "..info[2], "Info")
-				Elo.me:Info("Win/loss & Win%: "..info[3], "Info")
 				Elo:Menu("ally", "Allies", "gamepad")
 				Elo:Menu("enemy", "Enemies", "leaf")
 				for i = 1,6 do
