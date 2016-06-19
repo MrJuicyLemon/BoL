@@ -1,4 +1,4 @@
-local Version = "1.00"
+local Version = "1.01"
 
 
 local CopyRight = "MrJuicyLemon"
