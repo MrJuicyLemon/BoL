@@ -13,8 +13,6 @@ else
 	print('<font color="#FF1493"><b>[VayneZzStun]</b> </font><font color="#FF0000">Update Error</font>');
 end;
 
-
-
 if myHero.charName ~= "Vayne" then return end
 
 
