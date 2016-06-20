@@ -71,12 +71,12 @@ end
 
 function Stun()
 	if not ValidTarget(eTargetSelector.target) then return end
-	local CastPosition, HitChance = vPred:GetPredictedPos(eTargetSelector.target, 0.2, 1400, myHero, false)
-  local myVector = Vector(CastPosition) + Vector(Vector(CastPosition) - Vector(myHero)):normalized()*40
+	local CastPosition, HitChance = vPred:GetPredictedPos(eTargetSelector.target, 0.4, 1800, myHero, false)
+  local myVector = Vector(CastPosition) + Vector(Vector(CastPosition) - Vector(myHero)):normalized()*60
 	local gotIt , slot = GotItemSlot("ItemVoidGate")
   if gotIt then
 		if GetInventoryHaveItem(3512) then
-			if GetDistance(myHero, GetTarget()) < 400 then
+			if GetDistance(myHero, GetTarget()) <= 400 then
 				if myHero:CanUseSpell(_E) == READY and myHero:CanUseSpell(myHero:getInventorySlot(3512)) == READY then
 					--print("h")
 					CastSpell(_E, GetTarget())
@@ -86,13 +86,12 @@ function Stun()
 		end
 	end
 end
-
 function OnDraw()
 	if ZZVayne.ZZRange then
 		DrawCircle(myHero.x, myHero.y, myHero.z, 400, ARGB(255,255,255,255))
 	end
     if ZZVayne.ZZLand and ValidTarget(GetTarget()) then
-        local myVector = Vector(GetTarget()) + Vector(Vector(GetTarget()) - Vector(myHero)):normalized() * 70
+        local myVector = Vector(GetTarget()) + Vector(Vector(GetTarget()) - Vector(myHero)):normalized() * 60
         DrawCircle(myVector.x, myVector.y, myVector.z, 100, ARGB(255, 255, 255 , 250))
     end
 end
