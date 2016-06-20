@@ -20,7 +20,7 @@ if myHero.charName ~= "Vayne" then return end
 
 function message(i)
   do
-    print(string.format("<font color=\"#FC5743\"><b>Skin Changer Message: </b></font><font color=\"#E53CD4\">"..i.."</font>"))
+    print(string.format("<font color=\"#FC5743\"><b>Rot'Sec Message: </b></font><font color=\"#E53CD4\">"..i.."</font>"))
   end
 end
 
