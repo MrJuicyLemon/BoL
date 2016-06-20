@@ -13,6 +13,8 @@ else
 	print('<font color="#FF1493"><b>[VayneZzStun]</b> </font><font color="#FF0000">Update Error</font>');
 end;
 
+
+
 if myHero.charName ~= "Vayne" then return end
 
 
@@ -68,6 +70,7 @@ function OnTick()
 end
 
 function Stun()
+	myHero:MoveTo(mousePos.x, mousePos.z)
 	if not ValidTarget(eTargetSelector.target) then return end
 	local CastPosition, HitChance = vPred:GetPredictedPos(eTargetSelector.target, 0.4, 1800, myHero, false)
   local myVector = Vector(CastPosition) + Vector(Vector(CastPosition) - Vector(myHero)):normalized()*60
@@ -84,6 +87,7 @@ function Stun()
 		end
 	end
 end
+
 function OnDraw()
 	if ZZVayne.ZZRange then
 		DrawCircle(myHero.x, myHero.y, myHero.z, 400, ARGB(255,255,255,255))
